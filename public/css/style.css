@@ -1,0 +1,516 @@
+﻿/*Костыль с иконкой*/
+.fa-comments:before {
+    content: "\f4ad";
+}
+
+/*Общее*/
+html {
+	overflow-x: hidden;
+}
+main {
+	min-height: 100vh;
+	margin-top: 70px;
+}
+/*Шрифты*/
+p {
+	font-family: 'Roboto', sans-serif;
+}
+a, h1, h2, h3, h5, h4 {
+	font-family: 'Philosopher', sans-serif;
+	color: black;
+}
+a:hover {
+    text-decoration: underline;
+
+
+}
+
+/*Главное меню*/
+	nav {
+		-webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+		box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+	}
+	.dropdown:hover > .dropdown-menu { 
+	    display: block;
+	} 
+	@media (min-width: 950px) {
+		.dropdown:hover > .dropdown-col { 
+	    display: flex;
+	    margin-top: -10px; 
+	} 
+	}
+
+	
+	.menu-icon {
+		font-size: 20px;
+		padding: 10px;
+		background-color: transparent;
+	    color: black;
+	    border: 0px;
+	}
+	.menu-icon:after {
+		display: none;
+	}
+	.btn-outline-success {
+	    border-color: transparent;
+	}
+	.nav-link {
+		text-transform: uppercase;
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+	.logo {
+		margin-top: -10px;
+	}
+	.dropdown-menu {
+		border-radius: 0px;
+	    border: solid 0px;
+	    background-color: #f8f9fa;
+	}
+	.dropdown-item:hover {
+		background-color: grey !important;
+		color: white !important;
+	}
+	.dropdown {
+		display: inline;
+	}
+	.read-more {
+		color: blue;
+	}
+	.content { margin-top: 50px;}
+
+	/*Выпадающий список уведомлений*/
+	.bell-item {
+		border-bottom: solid 1px grey;
+	}
+	#dropdownMenuButton:hover, #dropdownMenuButton:active, .show>.btn-secondary.dropdown-toggle {
+    color: green !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 0 0rem rgba(108,117,125,.5);
+	}
+	.icon-dropdown {
+	right: -50%;
+    top: 34px;
+	}
+	/*Адаптив*/
+	@media (max-width: 1000px) {
+		.dropdown:hover > .dropdown-menu {
+    	left: 0px;
+    	widows: 200;
+    	}
+	}
+
+/*Слайдер*/
+	.slider-item{
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		height: calc(80vh - 76px);
+	}
+	.carousel {
+		margin-top: 76px;
+	}
+	.slider-arrow {
+		position: absolute;
+	    bottom: 0px;
+	    width: 100vw;
+	    text-align: center;
+	    color: white;
+	    font-size: 50px;
+	}
+
+/*Сайдбар*/
+	.left-sidebar {
+		padding-top: 55px;
+	}
+	.side-item{
+	transition: color 0.2s linear;
+
+	 }
+	.side-item:hover {
+    color: white !important;
+    background-color: grey;
+	}
+
+/*Главная*/
+
+	.cat-title {
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	.main {
+		margin-top: 70px;
+	}
+	.about-text-div {
+		height: 30vh;
+	    overflow-y: auto;
+	    margin-top: 40px;
+	    margin-bottom: 30px;
+	}
+	.about-text {
+		font-family: 'Philosopher', sans-serif;
+	}
+
+	/*Каталог*/
+		.catalog-item-col {
+			margin-bottom: 20px;
+		}
+		.catalog-item-title {
+			font-size: 15px;
+			text-align: center;
+			width: 100%;
+		}
+		.book-tags {
+			color: grey;
+			font-size: 12px;
+			margin-bottom: 5px;
+
+		}
+		.book-title {
+			margin: 0px;
+		}
+		.book-btn {
+			margin-top: 20px;
+		}
+		.book-description {
+			font-size: 15px;
+			line-height: 1;
+			color: gray;
+		}
+		.book-single-titile {
+			margin-bottom: 20px;
+		}
+		.book-tab {
+			margin-top: 24px;
+		}
+
+		/*Анимации*/
+		.catalog-book-item, .catalog-video-item {
+			transition: opacity 0.2s linear;
+		}
+		.catalog-book-item:hover, .catalog-video-item:hover {
+			opacity: .5
+		}
+		/*Карусель*/
+		    .slick-slider {
+	        width: 100%;
+	        margin: 100px auto;
+	    }
+
+	    .slick-slide {
+	      margin: 0px 20px;
+	    }
+
+	    .slick-slide img {
+	      width: 100%;
+	    }
+
+	    .slick-prev:before,
+	    .slick-next:before {
+	      color: black;
+	    }
+
+
+	    .slick-slide {
+	      transition: all ease-in-out .3s;
+	      opacity: .2;
+	    }
+	    
+	    .slick-active {
+	      opacity: 1;
+	    }
+
+	    .slick-current {
+	      opacity: 1;
+	    }
+
+
+/*Футер*/
+	footer {
+	background-color: #f8f9fa!important;
+	border-top: solid 1px #dad7d7;
+	margin-top: 10px;
+	position: relative;
+    width: 100vw;
+    bottom: 0px;
+    z-index: 2; 
+	}
+	.footer-title {
+		font-family: 'Philosopher', sans-serif;
+		font-size: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.footer-list {
+		list-style-type: none;
+		padding: 0px;
+	}
+	.footer-list > li > a {
+		color: black;
+	}
+	.footer-social-icon {
+		margin-right: 10px;
+		color: black;
+		border: solid 1px black;
+		padding: 6px;
+		border-radius: 100%;
+		transition: border-radius .2s linear;
+	}
+	.footer-social-icon > .fa-facebook-f {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.footer-social-icon > .fa-instagram {
+		padding-right: 2px;
+		padding-left: 2px;
+	}
+	.footer-social-icon:hover {
+		border-radius: 0%;
+		background-color: black;
+		color: white;
+	}
+
+/*Кабинет пользователя*/
+	.admin-main {
+		margin-top: 100px;
+	}
+	.add-icon {
+		position: fixed;
+	    right: 20px;
+	    bottom: 20px;
+	    font-size: 40px;
+	    z-index: 99;
+	    color: grey;
+	    transition: color 0.2s linear;
+	}
+	.add-icon:hover {
+		position: fixed;
+	    right: 20px;
+	    bottom: 20px;
+	    font-size: 40px;
+	    z-index: 99;
+	    color: green;
+	}
+	.book-stat {
+		width: 100%;
+		text-align: center;
+		color: grey;
+	}
+	/*Блог*/
+	.blog-button {
+		padding: 5px;
+		color: grey;
+
+	}
+	.blog-stat {
+		width: 50%;
+		float: left;
+	}
+	.blog-but {
+		width: 50%;
+		text-align: right;
+		float: right;
+	}
+	.blog-title {
+		margin: 0px;
+		text-align: center;
+	}
+	.avatar-blog {
+		max-width: 100px;
+		max-height: 100px;
+	}
+	.comment-info {
+		display: initial;
+    	
+	}
+	.child-comment {
+		margin-left: 10px;
+		border-left: solid 1px #80808057;
+	}
+	.comment-info > h5 {
+		margin: 0px;
+		
+	}
+	.comment-item {
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	.add_comment {
+		background-color: transparent;
+    display: inline;
+    color: #3b9aff;
+	}
+	/*форма*/
+	.custom-file-label::after {
+    content: "Загрузить";
+	}
+
+	.col-menu-test {
+		    display: inline;
+    float: right;
+	}
+	.dropdown-col {
+		width: 500px;
+	}
+
+.mar-15 {
+    margin-bottom: 15px;
+    border-bottom: solid 1px #80808038;
+    padding-bottom: 15px;
+}
+.overdiv {
+	height: 130px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    padding: 5px;
+} 
+.book-description {
+	font-size: 18px;
+	padding-top: 20px;
+}
+.single-book-tags {
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+.fa-bookmark:before {
+    content: "\f02d";
+}
+
+.vk-reg {
+	background-color: #5181b8;
+ color: white;
+    padding: 5px;
+    border-radius: 100%;
+}
+.fb-reg {
+	background-color: #3a5898;
+ 	color: white;
+	padding: 6px 10px;
+	border-radius: 100%;
+}
+.g-reg {
+	    background-color: #ea4235;
+    color: white;
+    padding: 5px;
+    border-radius: 100%;
+	transation: 0.2s linear;
+}
+.vk-reg:hover, .g-reg:hover, .fb-reg:hover   {
+	background-color: white;
+	color: black;
+}
+
+
+.example{
+	background:#FFF;
+	width:auto;
+	border:1px #000 solid;
+	margin:20px auto;
+	padding:15px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.example #content {
+	position:relative;
+	height:1000px;
+	padding:20px;
+}
+.example #content p{
+	line-height:1;
+}
+.example #content .page {
+	position:absolute;
+	top:0px;
+	padding-bottom:20px;
+}
+
+
+
+
+.example .pagination a.prevnext{
+	font-weight: bold;
+}
+.example .page_number {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.page_number {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+
+}
+
+.slick-slide img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+}
+.pagination, .pagination1 {
+    justify-content: center;
+    margin: 0px;
+        -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+#pagination1 > ul > li {
+	padding: 5px;
+	position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.navbar {
+    top: 0px;
+    position: absolute;
+    width: 100vw;
+    z-index: 999;
+}
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: normal;
+    background-color: transparent;
+    border: 0;
+}
+.example #content {
+    position: relative;
+    height: 1100px;
+    padding: 20px;
+    overflow-y: hidden;
+}
+.uparrow {
+	position: fixed; 
+	bottom: 10px; 
+	right: 10px; 
+	font-size: 40px; 
+	color: #00000070;
+}
+.uparrow:hover {
+	color: black !important;
+}
+@media (max-width: 760px) {
+	.left-sidebar { display: none; }
+	#carouselExampleFade {
+		display: none;
+	}
+
+} 
