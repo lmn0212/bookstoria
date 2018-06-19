@@ -10,7 +10,7 @@
         </div>
 
         <div class="carousel-item">
-            <div class="d-block w-100 slider-item" style="background-image: url(img/banner2.JPG)">
+            <div class="d-block w-100 slider-item" style="background-image: url(img/banner2.jpg)">
             </div>
         </div>
 
