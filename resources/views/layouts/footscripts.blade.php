@@ -2,7 +2,7 @@
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script src="/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{asset('slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     $(document).on('ready', function() {
         $('.regular').slick({
@@ -82,11 +82,11 @@
 
 </script>
 
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/wow.min.js"></script>
+<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/wow.min.js')}}"></script>
 
 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'readbook' || \Illuminate\Support\Facades\Route::current()->getName() === 'readchapter')
-	<script type="text/javascript" src="/js/readpag.js"></script>
+	<script type="text/javascript" src="{{asset('js/readpag.js')}}"></script>
 	<script>
         jQuery(window).load(function() {
             $('#content').MyPagination({height: 800, fadeSpeed: 400});
@@ -112,7 +112,7 @@
 
 
 
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 	$(document).ready(function() {
