@@ -30,7 +30,7 @@
         <script src="{{asset('packages/sleepingowl/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8"></script>
     @endif
 
-    <title>Bookstoria.net | @if(isset($title) && !empty($title)) {{$title}} @else Читайте с нами! @endif</title>
+    <title>Bookstorya.com | @if(isset($title) && !empty($title)) {{$title}} @else Читайте с нами! @endif</title>
     <style type="text/css">
         html, body {
             margin: 0;
