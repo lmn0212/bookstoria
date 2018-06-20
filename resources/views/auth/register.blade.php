@@ -69,15 +69,15 @@
                             </div>
                         </div>
                     </form>
-                    <div class="form-group">
-                        <div class="col-md-12 text-center col-md-offset-4">
+                    <div class="row">
+                        {{--<div class="col-md-12 text-center col-md-offset-4">
                             <h4 class="align-center" style="margin-top: 20px;"> 
                                 {{ __('Войти через социальные сети:') }}
                             </h4>
                             <a href="{{ url('/login/google') }}" class="btn btn-google"><i class="fab fa-google g-reg"></i></a>
                             <a href="{{ url('/login/facebook') }}" class="btn btn-facebook"><i class="fab fa-facebook-f fb-reg"></i></a>
                             <a href="{{ url('/login/vkontakte') }}" class="btn btn-facebook"><i class="fab fa-vk vk-reg"></i></a>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
