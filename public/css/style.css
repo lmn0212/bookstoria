@@ -110,7 +110,7 @@ a:hover {
 		height: calc(80vh - 76px);
 	}
 	.carousel {
-		margin-top: 76px;
+		margin-top: 50px;
 	}
 	.slider-arrow {
 		position: absolute;

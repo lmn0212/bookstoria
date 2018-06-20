@@ -9,6 +9,9 @@
 
             <div class="col-12 col-md-8 col-lg-9 content" style="margin-top: 60px;">
                 <div class="row justify-content-center">
+                    <div class="col-12">
+                        <h2 class="cat-title">Моя библиотека</h2>
+                    </div>
                     <div class="col-10">
                         <div class="row">
                              @foreach($lib as $l)

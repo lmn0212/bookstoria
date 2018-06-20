@@ -9,7 +9,7 @@
 
             <div class="col-12 col-md-8 col-lg-9 content" style="margin-top: 60px;">
 
-                <div class="row wow fadeInUp justify-content-center">
+                <div class="row wow justify-content-center">
 
                     <div class="col-12">
                         <h2 class="cat-title">Мои финансы</h2>
