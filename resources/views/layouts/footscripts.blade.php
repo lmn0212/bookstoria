@@ -115,3 +115,9 @@
     $('.js-example-basic-multiple').select2();
 });
 </script>
+
+@if(Route::currentRouteName() == 'addchapter' || Route::currentRouteName() == 'editbook')
+    <script>
+        CKEDITOR.replaceAll();
+    </script>
+@endif

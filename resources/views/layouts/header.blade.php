@@ -120,7 +120,7 @@
                         <a class="dropdown-item" href="{{ route('register') }}">Зарегестрироваться</a>
 
                         @else
-                            <a  class="dropdown-item" href="/home" role="button">
+                            <a  class="dropdown-item" href="/mybooks" role="button">
                                 {{ Auth::user()->name }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"

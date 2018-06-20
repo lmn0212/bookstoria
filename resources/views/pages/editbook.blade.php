@@ -26,7 +26,7 @@
                                             <div class="card-body">
                                                 <input type="number" class="form-control"  placeholder="Номер главы" value="{{$c->number}}" required><br>
                                                 <input type="text" class="form-control"  placeholder="Название главы" value="{{$c->name}}" required><br>
-                                                <textarea class="form-control" rows="20"  placeholder="Текст книги" value="{{$c->text}}" required></textarea>
+                                                <textarea class="form-control editorchapter" rows="20"  placeholder="Текст книги" required>{{$c->text}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                                 <div class="card-body">
                                                     <input type="number" class="form-control" name="numberchapter" placeholder="Номер главы" required><br>
                                                     <input type="text" class="form-control" name="namechapter" placeholder="Название главы" required><br>
-                                                    <textarea class="form-control" rows="20" name="textchapter" placeholder="Текст книги" required></textarea>
+                                                    <textarea class="form-control" id="addchapter" rows="20" name="textchapter" placeholder="Текст книги" required></textarea>
                                                 </div>
                                             </div>
                                         </div>

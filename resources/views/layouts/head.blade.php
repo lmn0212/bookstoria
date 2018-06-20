@@ -26,6 +26,10 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="{{asset('slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
 
+    @if(Route::currentRouteName() == 'addchapter' || Route::currentRouteName() == 'editbook')
+        <script src="{{asset('packages/sleepingowl/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8"></script>
+    @endif
+
     <title>Bookstoria.net | @if(isset($title) && !empty($title)) {{$title}} @else Читайте с нами! @endif</title>
     <style type="text/css">
         html, body {

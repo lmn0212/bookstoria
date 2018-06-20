@@ -192,7 +192,7 @@ class BooksController extends Controller
 
                if($role->name == 'author' || $role->name == 'admin'){
                    $chapter->name = $request->namechapter;
-                   $chapter->text = $request->textchapter;
+                   $chapter->text = strip_tags($request->textchapter, '<p><a><br />');
                    $chapter->number = $request->numberchapter;
                    $chapter->author_id = $user->id;
                    $chapter->book_id = $request->bookid;
