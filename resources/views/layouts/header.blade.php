@@ -53,13 +53,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.youtube.com/channel/UCR-ZYQtlunzYMcGh0Jwxo_g" target="_blank">Книги на YouTube</a>
                 </li>
-               <li class="nav-item">
-                    <a class="nav-link" href="/blogs">Блоги</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/competition/all">Конкурсы</a>
-                </li>
+               {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="/blogs">Блоги</a>--}}
+                {{--</li>--}}
+
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="/competition/all">Конкурсы</a>--}}
+                {{--</li>--}}
+
             </ul>
 
             <form class="form-inline my-2 my-lg-0" type="GET" action="/search">
@@ -79,12 +81,14 @@
                             Моя библиотека
                         </a>
                     </li>
-                    <li class="dropdown-item">Обновления</li>
+
+                    {{--<li class="dropdown-item">Обновления</li>--}}
+
                 </ul>
             </div>
 
                 <!-- Уведомления -->
-                <div class="dropdown">
+                {{--<div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="far fa-bell"></i>
                     </button>
@@ -99,7 +103,8 @@
                         @endforeach
                         <li class="dropdown-item bell-item">Новых оповещений нет</li>
                     </ul>
-                </div>
+                </div>--}}
+
         @endif
 
             <!-- Sign up -->
