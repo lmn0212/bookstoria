@@ -88,10 +88,10 @@
                                     @else
                                         <div class="col-md-12" style=" font-size: 18px; padding: 0px;"><span> <strong>Цена:</strong> Бесплатно </span></div>
                                     @endif
-                                    @if(!\Illuminate\Support\Facades\Auth::user())
+                                    @if(!Auth::user())
                                         <p>Чтобы купить книгу, пожалуйста <a href="/login"> войдите на сайт</a></p>
                                     @endif
-                                @if(\Illuminate\Support\Facades\Auth::user() && $book->price > 0 && $book->chapter_count > 0)
+                                @if(Auth::user() && $book->price > 0 && $book->chapter_count > 0)
                                         @if(isset($book->complete) && $book->complete == 1)
                                             <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success">Купить за {{$book->price}} &#8381;</a >
                                         @else
@@ -100,10 +100,10 @@
                                        <!-- </div> -->
                                 @endif
 
-                                    
 
+                                @if(Auth::user())
                                 <a href="/library/add/{{$book->id}}" class="btn btn-warning book-btn" style="color: white;">Добавить в библиотеку</a>
-                                
+                                @endif
                             </div>
 
                         </div>
@@ -116,7 +116,7 @@
 
                         </div>
 
-                    @if(\Illuminate\Support\Facades\Auth::check())
+                    @if(Auth::check())
 
                         <!-- Комментарии-->
 
