@@ -14,37 +14,46 @@ use LiqPay;
 
 class OrderController extends Controller
 {
-    public function createOrder($id)
+    public function createOrder(Request $request, $id)
     {
        if(Auth::user() && isset($id) && !empty($id)){
-           $us = Auth::user()->id;
-           $order = new Order();
-           $order->user_id = $us;
-           $order->book_id = $id;
-           $order->save();
            $book = Book::find($id);
            $cats = Category::all();
            $cols = Collection::all();
            $foot = FooterMenu::all();
+           $payment_id = random_int(999, 9999).now()->format('YmdHis');
+
+           $order = new Order();
+           $order->user_id = Auth::user()->id;
+           $order->book_id = $id;
+           $order->ip = $request->ip();
+           $order->description = 'Покупка книги '. $book->name;
+//           $order->currency = 'RUB';
+//           $order->payment_id = $payment_id;
+//           $order->summ = $book->price;
+           $order->save();
+
            if(isset($order) && isset($book) && !empty($book)){
                session()->put('order_id', $order->id);
                $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
-               //dd($liqpay);
                $html = $liqpay->cnb_form(array(
                    'action'         => 'pay',
                    'amount'         => $book->price,
                    'currency'       => 'RUB',
-                   'description'    => 'Покупка книги '. $book->name,
-                   'order_id'       => $order->id,
+                   'description'    => $order->description,
+                   'order_id'       => $order->id, // $order->payment_id
                    'version'        => '3',
-                   //'sandbox'        => '1',
+                   'sandbox'        => '1',
                ));
+
+//               dd($order);
+
                return view('pages.liqpay',[
                    'form'=>$html,
                    'cols'=>$cols,
                    'cats'=>$cats,
                    'book'=>$book,
-                   'foot'=>$foot,
+                   'foot'=>$foot
                ]);
            }
        }
@@ -53,6 +62,7 @@ class OrderController extends Controller
     public function acceptOrder(Request $request)
     {
         $sess = session()->get('order_id');
+        return $sess;
         if(isset($sess) && !empty($sess))
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
@@ -67,8 +77,8 @@ class OrderController extends Controller
                 $order->result = $res->result;
                 $order->paytype = $res->paytype;
                 $order->liqpay_order_id = $res->liqpay_order_id;
-                $order->description = $res->description;
-                $order->ip = $res->ip;
+//                $order->description = $res->description;
+//                $order->ip = $res->ip;
                 $order->summ = $res->amount;
                 $order->currency = $res->currency;
                 $order->save();
