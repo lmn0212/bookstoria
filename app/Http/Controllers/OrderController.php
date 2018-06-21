@@ -78,7 +78,7 @@ class OrderController extends Controller
                 $order->summ = $res->amount;
                 $order->currency = $res->currency;
                 $order->save();
-                return redirect('/');
+                return redirect(route('getbook', ['id' => $order->book_id]));
             }
 
         }else{
