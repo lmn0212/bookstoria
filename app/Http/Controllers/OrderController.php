@@ -28,6 +28,7 @@ class OrderController extends Controller
            $order->book_id = $id;
            $order->ip = $request->ip();
            $order->description = 'Покупка книги '. $book->name;
+           $order->result = 'create';
 //           $order->currency = 'RUB';
 //           $order->payment_id = $payment_id;
 //           $order->summ = $book->price;
@@ -61,6 +62,7 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request)
     {
+        return ['request' => $request->all()];
         $sess = session()->get('order_id');
 
         if(isset($sess) && !empty($sess))
@@ -71,7 +73,7 @@ class OrderController extends Controller
                 'version'       => '3',
                 'order_id'      => $sess
             ));
-            return ['data' => $res];
+
             if(isset($res) && !empty($res)){
                 $order = Order::find($sess);
                 $order->payment_id = $res->payment_id;
