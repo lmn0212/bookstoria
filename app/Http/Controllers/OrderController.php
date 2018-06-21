@@ -64,15 +64,13 @@ class OrderController extends Controller
             $res = $liqpay->api("request", array(
                 'action'        => 'status',
                 'version'       => '3',
-//                'order_id'      => $sess
+                'order_id'      => $sess
             ));
-
-            return ['data' => $res];
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
                 $order->payment_id = $res->payment_id;
-                $order->result = $res->status;
+                $order->result = $res->result;
                 $order->paytype = $res->paytype;
                 $order->liqpay_order_id = $res->liqpay_order_id;
 //                $order->description = $res->description;
