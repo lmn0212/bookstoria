@@ -1,5 +1,5 @@
 @include('layouts.head')
-<body>
+<body style='user-select: none;' onselectstart='return false;'>
 @include('layouts.header')
 
 @yield('content')
