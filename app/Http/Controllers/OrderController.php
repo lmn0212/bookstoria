@@ -21,7 +21,6 @@ class OrderController extends Controller
            $cats = Category::all();
            $cols = Collection::all();
            $foot = FooterMenu::all();
-           $payment_id = random_int(999, 9999).now()->format('YmdHis');
 
            $order = new Order();
            $order->user_id = Auth::user()->id;
@@ -29,9 +28,6 @@ class OrderController extends Controller
            $order->ip = $request->ip();
            $order->description = 'Покупка книги '. $book->name;
            $order->result = 'create';
-//           $order->currency = 'RUB';
-//           $order->payment_id = $payment_id;
-//           $order->summ = $book->price;
            $order->save();
 
            if(isset($order) && isset($book) && !empty($book)){
@@ -47,8 +43,6 @@ class OrderController extends Controller
                    'sandbox'        => '1',
                ));
 
-//               dd($order);
-
                return view('pages.liqpay',[
                    'form'=>$html,
                    'cols'=>$cols,
@@ -62,7 +56,6 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request)
     {
-        return ['request' => $request->all()];
         $sess = session()->get('order_id');
 
         if(isset($sess) && !empty($sess))
@@ -71,13 +64,13 @@ class OrderController extends Controller
             $res = $liqpay->api("request", array(
                 'action'        => 'status',
                 'version'       => '3',
-                'order_id'      => $sess
+//                'order_id'      => $sess
             ));
 
             if(isset($res) && !empty($res)){
-                $order = Order::find($sess);
+                $order = Order::find($res->order_id);
                 $order->payment_id = $res->payment_id;
-                $order->result = $res->result;
+                $order->result = $res->status;
                 $order->paytype = $res->paytype;
                 $order->liqpay_order_id = $res->liqpay_order_id;
 //                $order->description = $res->description;
