@@ -20,7 +20,7 @@
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="author" placeholder="Имя автора" required>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group custom-file-block col-md-12">
                                     <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es" required>
                                     <label class="custom-file-label" for="customFile"></label>
                                 </div>
@@ -90,4 +90,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelector("#customFile").addEventListener("change", function () {
+            if (this.files[0]) {
+                var fr = new FileReader();
+
+                fr.addEventListener("load", function () {
+                    document.querySelector("label").style.backgroundImage = "url(" + fr.result + ")";
+                }, false);
+
+                fr.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 @endsection

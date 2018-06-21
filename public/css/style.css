@@ -346,10 +346,19 @@ a:hover {
     color: #3b9aff;
 	}
 	/*форма*/
-	.custom-file-label::after {
-    content: "Загрузить";
+	.custom-file-block{
+		min-height: 250px;
 	}
-
+	.custom-file-label::after {
+    	content: "Загрузить";
+	}
+	.custom-file-label{
+		display: inline-block;
+		height: 250px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
 	.col-menu-test {
 		    display: inline;
     float: right;
