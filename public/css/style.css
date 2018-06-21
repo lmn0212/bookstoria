@@ -347,14 +347,20 @@ a:hover {
 	}
 	/*форма*/
 	.custom-file-block{
-		min-height: 250px;
+		height: 250px;
+		width: 175px;
 	}
 	.custom-file-label::after {
-    	content: "Загрузить";
+    	content: "Загрузить обложку";
+		top: -39px!important;
+        width: 100%;
+        border-radius: 0;
+        border: none;
 	}
 	.custom-file-label{
 		display: inline-block;
 		height: 250px;
+		width: 175px;
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;

@@ -17,14 +17,15 @@
                                 <div class="form-group col-md-12">
                                     <input type="text" class="form-control" name="name" placeholder="Название книги" required>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <input type="text" class="form-control" name="author" placeholder="Имя автора" required>
                                 </div>
-                                <div class="form-group custom-file-block col-md-12">
+                                <div class="form-group custom-file-block col-md-12" style="margin-top: 35px; margin-left: 5px;">
                                     <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es" required>
                                     <label class="custom-file-label" for="customFile"></label>
                                 </div>
                                 <div class="form-group col-md-12">
+                                    <label for="annotacia">Аннотация</label>
                                     <textarea class="form-control" id="annotacia" rows="8" name="annotation" placeholder="Аннотации" required></textarea>
                                 </div>
 
