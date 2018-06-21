@@ -16,7 +16,8 @@ class OrderController extends Controller
 {
     public function createOrder(Request $request, $id)
     {
-       if(Auth::user() && isset($id) && !empty($id)){
+        session()->forget('order_id');
+        if(Auth::user() && isset($id) && !empty($id)){
            $book = Book::find($id);
            $cats = Category::all();
            $cols = Collection::all();

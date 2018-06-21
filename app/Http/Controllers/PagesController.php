@@ -33,7 +33,6 @@ class PagesController extends Controller
             ]);
         }
         return abort(403,'access denied');
-
     }
 
     public function getFront()
