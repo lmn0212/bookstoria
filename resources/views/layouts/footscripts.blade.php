@@ -121,3 +121,8 @@
         CKEDITOR.replaceAll();
     </script>
 @endif
+@if(Route::currentRouteName() == 'home' || Route::currentRouteName() == 'edittbook')
+    <script>
+        CKEDITOR.replace( 'annotacia' );
+    </script>
+@endif

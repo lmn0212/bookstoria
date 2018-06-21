@@ -24,12 +24,12 @@
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" name="author" placeholder="Имя автора" value="{{$book->author_name}}" required>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group custom-file-block col-md-12">
                                     <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es">
-                                    <label class="custom-file-label" for="customFile">Загрузите обложку</label>
+                                    <label class="custom-file-label" for="customFile"></label>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <textarea class="form-control" rows="8" name="annotation" placeholder="Аннотации"  required>{{$book->annotation}}</textarea>
+                                    <textarea class="form-control" id="annotacia" rows="8" name="annotation" placeholder="Аннотации"  required>{{$book->annotation}}</textarea>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -102,4 +102,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelector("#customFile").addEventListener("change", function () {
+            if (this.files[0]) {
+                var fr = new FileReader();
+
+                fr.addEventListener("load", function () {
+                    document.querySelector("label").style.backgroundImage = "url(" + fr.result + ")";
+                }, false);
+
+                fr.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
 @endsection

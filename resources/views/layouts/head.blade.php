@@ -26,7 +26,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="{{asset('slick/slick.js')}}" type="text/javascript" charset="utf-8"></script>
 
-    @if(Route::currentRouteName() == 'addchapter' || Route::currentRouteName() == 'editbook')
+    @if(Route::currentRouteName() == 'addchapter' || Route::currentRouteName() == 'editbook' || Route::currentRouteName() == 'home' || Route::currentRouteName() == 'edittbook')
         <script src="{{asset('packages/sleepingowl/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8"></script>
     @endif
 

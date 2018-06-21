@@ -25,7 +25,7 @@
                                     <label class="custom-file-label" for="customFile"></label>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <textarea class="form-control" rows="8" name="annotation" placeholder="Аннотации" required></textarea>
+                                    <textarea class="form-control" id="annotacia" rows="8" name="annotation" placeholder="Аннотации" required></textarea>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -38,8 +38,8 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="FormControlSelect2">Темматические подборки</label>
-                                    <select class="form-control js-example-basic-multiple" multiple name="collections[]" id="collections" required>
+                                    <label for="FormControlSelect2">Тематические подборки</label>
+                                    <select class="form-control js-example-basic-multiple" multiple name="collections[]" id="collections">
                                         @foreach($cols as $col)
                                             <option value="{{$col->id}}">{{$col->name}}</option>
                                         @endforeach

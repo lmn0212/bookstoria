@@ -33,7 +33,7 @@ class BooksController extends Controller
                        Image::make($image)->save($location);
                        $book->cover = 'images/covers/' . $filename;
                    }
-                   $book->annotation = $request->annotation;
+                   $book->annotation = strip_tags($request->annotation, '<p><a><br />');
                    if(isset($request->booktailer) && !empty($request->booktailer))
                    {
                        $book->booktailer = $request->booktailer;
@@ -86,7 +86,7 @@ class BooksController extends Controller
                                 Image::make($image)->save($location);
                                 $book->cover = 'images/covers/' . $filename;
                             }
-                            $book->annotation = $request->annotation;
+                            $book->annotation = strip_tags($request->annotation, '<p><a><br />');
                             if(isset($request->booktailer) && !empty($request->booktailer))
                             {
                                 $book->booktailer = $request->booktailer;
