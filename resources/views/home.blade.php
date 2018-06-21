@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es" required>
-                                    <label class="custom-file-label" for="customFile">Загрузите обложку</label>
+                                    <label class="custom-file-label" for="customFile"></label>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <textarea class="form-control" rows="8" name="annotation" placeholder="Аннотации" required></textarea>

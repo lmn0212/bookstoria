@@ -16,7 +16,9 @@ class OrderController extends Controller
 {
     public function createOrder(Request $request, $id)
     {
-        session()->forget('order_id');
+        if (session()->get('order_id')){
+            session()->forget('order_id');
+        }
         if(Auth::user() && isset($id) && !empty($id)){
            $book = Book::find($id);
            $cats = Category::all();
@@ -71,7 +73,7 @@ class OrderController extends Controller
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
                 $order->payment_id = $res->payment_id;
-                $order->result = $res->result;
+                $order->result = $res->status;
                 $order->paytype = $res->paytype;
                 $order->liqpay_order_id = $res->liqpay_order_id;
 //                $order->description = $res->description;

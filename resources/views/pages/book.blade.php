@@ -85,7 +85,7 @@
 
                                 @if(count(Auth::user()->orders) > 0)
                                     @foreach(Auth::user()->orders as $order)
-                                        @if($order->book_id == $book->id && $order->result == 'ok')
+                                        @if($order->book_id == $book->id && $order->result == 'success')
                                             <p>Вы купили эту книгу</p>
                                             @php
                                                 $payment = true;
