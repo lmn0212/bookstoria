@@ -62,7 +62,7 @@ class OrderController extends Controller
     public function acceptOrder(Request $request)
     {
         $sess = session()->get('order_id');
-        return $sess;
+
         if(isset($sess) && !empty($sess))
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
@@ -71,6 +71,7 @@ class OrderController extends Controller
                 'version'       => '3',
                 'order_id'      => $sess
             ));
+            return $res;
             if(isset($res) && !empty($res)){
                 $order = Order::find($sess);
                 $order->payment_id = $res->payment_id;
