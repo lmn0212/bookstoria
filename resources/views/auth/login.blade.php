@@ -63,7 +63,7 @@
                     </form>
                     <div class="row">
                         {{--<div class="col-md-12 text-center col-md-offset-4">
-                            <h4 class="align-center" style="margin-top: 20px;"> 
+                            <h4 class="align-center" style="margin-top: 20px;">
                                 {{ __('Войти через социальные сети:') }}
                             </h4>
                             <a href="{{ url('/login/google') }}" class="btn btn-google"><i class="fab fa-google g-reg"></i></a>

@@ -54,13 +54,13 @@
                     <a class="nav-link" href="https://www.youtube.com/channel/UCR-ZYQtlunzYMcGh0Jwxo_g" target="_blank">Книги на YouTube</a>
                 </li>
 
-               {{--<li class="nav-item">--}}
-                    {{--<a class="nav-link" href="/blogs">Блоги</a>--}}
-                {{--</li>--}}
+               <li class="nav-item">
+                    <a class="nav-link" href="/blogs">Блоги</a>
+                </li>
 
-                {{--<li class="nav-item">--}}
-                    {{--<a class="nav-link" href="/competition/all">Конкурсы</a>--}}
-                {{--</li>--}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/competition/all">Конкурсы</a>
+                </li>
 
             </ul>
 

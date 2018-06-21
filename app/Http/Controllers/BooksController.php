@@ -48,10 +48,13 @@ class BooksController extends Controller
                    {
                        $book->categories()->attach($cat);
                    }
-                   foreach ($request->collections as $cat)
-                   {
-                       $book->collections()->attach($cat);
+
+                   if(isset($request->collections) && !empty($request->collections)){
+                       foreach ($request->collections as $cat){
+                           $book->collections()->attach($cat);
+                       }
                    }
+
                    return redirect()->route('editbook', $book->id);
                }else{
                    return abort(403);
