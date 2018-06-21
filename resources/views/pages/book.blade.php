@@ -82,7 +82,19 @@
                                 <i class="fas fa-comments"></i> <span> {{$book->comments->count()}}</span>
 
                                 <i class="fas fa-bookmark"></i> <span> {{$book->libraries->count()}}</span><br>
-                                <!-- <div class="col-md-12" style="margin-top: 20px; padding: 0px"> -->
+
+                                @if(count(Auth::user()->orders) > 0)
+                                    @foreach(Auth::user()->orders as $order)
+                                        @if($order->book_id == $book->id && $order->result == 'ok')
+                                            <p>Вы купили эту книгу</p>
+                                            @php
+                                                $payment = true;
+                                            @endphp
+                                            @break
+                                        @endif
+                                    @endforeach
+                                @endif
+
                                     @if($book->price > 0)
                                         <div style="display: inline-block; font-size: 18px; padding-right: 20px;"><span> <strong>Цена:</strong> {{$book->price}} &#8381; </span></div>
                                     @else
@@ -92,12 +104,13 @@
                                         <p>Чтобы купить книгу, пожалуйста <a href="/login"> войдите на сайт</a></p>
                                     @endif
                                 @if(Auth::user() && $book->price > 0 && $book->chapter_count > 0)
+                                    @if(!$payment)
                                         @if(isset($book->complete) && $book->complete == 1)
                                             <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success">Купить за {{$book->price}} &#8381;</a >
                                         @else
                                             <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success">Подписаться за {{$book->price}} &#8381;</a>
                                         @endif
-                                       <!-- </div> -->
+                                    @endif
                                 @endif
 
 
