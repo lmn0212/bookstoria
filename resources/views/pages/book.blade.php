@@ -95,14 +95,15 @@
                                     @endforeach
                                 @endif
 
-                                    @if($book->price > 0)
-                                        <div style="display: inline-block; font-size: 18px; padding-right: 20px;"><span> <strong>Цена:</strong> {{$book->price}} &#8381; </span></div>
-                                    @else
-                                        <div class="col-md-12" style=" font-size: 18px; padding: 0px;"><span> <strong>Цена:</strong> Бесплатно </span></div>
-                                    @endif
-                                    @if(!Auth::user())
-                                        <p>Чтобы купить книгу, пожалуйста <a href="/login"> войдите на сайт</a></p>
-                                    @endif
+                                @if($book->price > 0 && !isset($payment))
+                                    <div style="display: inline-block; font-size: 18px; padding-right: 20px;"><span> <strong>Цена:</strong> {{$book->price}} &#8381; </span></div>
+                                @else
+                                    <div class="col-md-12" style=" font-size: 18px; padding: 0px;"><span> <strong>Цена:</strong> Бесплатно </span></div>
+                                @endif
+                                @if(!Auth::user())
+                                    <p>Чтобы купить книгу, пожалуйста <a href="/login"> войдите на сайт</a></p>
+                                @endif
+
                                 @if(Auth::user() && $book->price > 0 && $book->chapter_count > 0)
                                     @if(!isset($payment))
                                         @if(isset($book->complete) && $book->complete == 1)
