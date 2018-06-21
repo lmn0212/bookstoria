@@ -40,7 +40,7 @@ class OrderController extends Controller
                    'description'    => $order->description,
                    'order_id'       => $order->id, // $order->payment_id
                    'version'        => '3',
-                   'sandbox'        => '1',
+//                   'sandbox'        => '1',
                ));
 
                return view('pages.liqpay',[
