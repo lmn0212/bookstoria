@@ -72,6 +72,10 @@ class CompetitionController extends Controller
         if(isset($id) && !empty($id))
         {
             $com = Competition::find($id);
+            if ($com){
+                $com->load('comporders', 'comporders.books');
+            }
+//            dd($com);
             if(isset($com) && !empty($com))
             {
                 if(Auth::user())
