@@ -61,59 +61,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/competition/all">Конкурсы</a>
                 </li>
-                @guest
+                {{--@guest
                     <li class="nav-item visible_mobile">
                         <a class="nav-link" href="{{ route('login') }}">Войти</a>
                     </li>
                     <li class="nav-item visible_mobile">
                         <a class="nav-link" href="{{ route('register') }}">Зарегестрироваться</a>
                     </li>
-                @endguest
+                @endguest--}}
             </ul>
-
-            <form class="form-inline my-2 my-lg-0" type="GET" action="/search">
-                @csrf
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Поиск" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-
-        @if(\Illuminate\Support\Facades\Auth::user())
-            <!-- Книги -->
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-book"></i>
-                </button>
-                <ul class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <li class="dropdown-item"><a href="/mylibrary">
-                            Моя библиотека
-                        </a>
-                    </li>
-
-                    {{--<li class="dropdown-item">Обновления</li>--}}
-
-                </ul>
-            </div>
-
-                <!-- Уведомления -->
-                {{--<div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="far fa-bell"></i>
-                    </button>
-                    <ul class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        @php
-                            $notify = \App\Http\Helpers\AdminHelper::getNotify();
-                        @endphp
-                        @foreach($notify as $n)
-                            @if(isset($n->message))
-                                <li class="dropdown-item bell-item">{!! $n->message !!}</li>
-                            @endif
-                        @endforeach
-                        <li class="dropdown-item bell-item">Новых оповещений нет</li>
-                    </ul>
-                </div>--}}
-
-        @endif
-
             <!-- Sign up -->
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -137,11 +93,47 @@
                             @csrf
                         </form>
                     @endguest
-
                 </div>
             </div>
+            <form class="form-inline my-2 my-lg-0" type="GET" action="/search">
+                @csrf
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Поиск" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+
+        @if(Auth::user())
+            <!-- Книги -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-book"></i>
+                </button>
+                <ul class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <li class="dropdown-item"><a href="/mylibrary">
+                            Моя библиотека
+                        </a>
+                    </li>
+                    {{--<li class="dropdown-item">Обновления</li>--}}
+                </ul>
+            </div>
+            <!-- Уведомления -->
+            {{--<div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-bell"></i>
+                </button>
+                <ul class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    @php
+                        $notify = \App\Http\Helpers\AdminHelper::getNotify();
+                    @endphp
+                    @foreach($notify as $n)
+                        @if(isset($n->message))
+                            <li class="dropdown-item bell-item">{!! $n->message !!}</li>
+                        @endif
+                    @endforeach
+                    <li class="dropdown-item bell-item">Новых оповещений нет</li>
+                </ul>
+            </div>--}}
+        @endif
 
         </div>
-
     </nav>
 </header>

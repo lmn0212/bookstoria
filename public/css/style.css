@@ -70,6 +70,8 @@ a:hover {
 		border-radius: 0px;
 	    border: solid 0px;
 	    background-color: #f8f9fa;
+		width: 190px;
+		box-shadow: 0 1px 3px #ccc;
 	}
 	.dropdown-item:hover {
 		background-color: grey !important;
@@ -100,8 +102,9 @@ a:hover {
 	/*Адаптив*/
 	@media (max-width: 1000px) {
 		.dropdown:hover > .dropdown-menu {
-    	left: 0px;
-    	widows: 200;
+			left: 10px;
+			top: 22px;
+			widows: 200;
     	}
 	}
 
