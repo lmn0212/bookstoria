@@ -38,7 +38,7 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_ID'),
         'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect'      => 'http://bookstorya.com/login/facebook/callback',
+        'redirect'      => 'https://bookstorya.com/login/facebook/callback',
     ],
     'google' => [
         'client_id'     => env('GOOGLE_ID'),
