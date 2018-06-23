@@ -43,11 +43,11 @@ return [
     'google' => [
         'client_id'     => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
-        'redirect'      => 'http://bookstorya.com/login/google/callback',
+        'redirect'      => 'https://bookstorya.com/login/google/callback',
     ],
     'vkontakte' => [
         'client_id'     => env('VK_ID'),
         'client_secret' => env('VK_SECRET'),
-        'redirect'      => 'http://bookstorya.com/login/vkontakte/callback',
+        'redirect'      => 'https://bookstorya.com/login/vkontakte/callback',
     ],
 ];
