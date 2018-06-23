@@ -33,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/library/delete/{id}', 'LibraryController@delete')->name('libdel');
     //Orders
     Route::get('/order/create/{id}', 'OrderController@createOrder');
-    Route::post('/order/accept','OrderController@acceptOrder');
     //Blogs
     Route::get('/myblogs', 'BlogsController@myBlogs');
     Route::get('/blog/add', 'BlogsController@addBlog');
@@ -47,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myfinance', 'PagesController@myFinance');
 
 });
+//Orders
+Route::post('/order/accept','OrderController@acceptOrder');
 
 //book
 Route::get('/book/{id}', 'BooksController@getBook')->name('getbook');
