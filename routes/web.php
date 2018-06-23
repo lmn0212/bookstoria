@@ -21,7 +21,6 @@ Route::middleware(['auth'])->group(function () {
     //book
     Route::post('/book/add', 'BooksController@add')->name('addbook');
     Route::get('/mybooks', 'BooksController@myBooks')->name('mybooks');
-    Route::get('/book/{id}', 'BooksController@getBook')->name('getbook');
     Route::get('/book/edit/{id}','BooksController@editB')->name('edittbook');
     Route::get('/book/delete/{id}','BooksController@delete')->name('deletebook');
     Route::post('/book/edit', 'BooksController@edit');
@@ -50,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //book
+Route::get('/book/{id}', 'BooksController@getBook')->name('getbook');
 Route::get('/allbook', 'BooksController@getCatAll')->name('getcatall');
 
 //chapter
