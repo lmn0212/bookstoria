@@ -38,16 +38,16 @@ return [
     'facebook' => [
         'client_id'     => env('FACEBOOK_ID'),
         'client_secret' => env('FACEBOOK_SECRET'),
-        'redirect'      => 'https://bookstoria.net/login/facebook/callback',
+        'redirect'      => 'http://bookstorya.com/login/facebook/callback',
     ],
     'google' => [
         'client_id'     => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
-        'redirect'      => 'https://bookstoria.net/login/google/callback',
+        'redirect'      => 'http://bookstorya.com/login/google/callback',
     ],
     'vkontakte' => [
         'client_id'     => env('VK_ID'),
         'client_secret' => env('VK_SECRET'),
-        'redirect'      => 'https://bookstoria.net/login/vkontakte/callback',
+        'redirect'      => 'http://bookstorya.com/login/vkontakte/callback',
     ],
 ];
