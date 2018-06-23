@@ -139,7 +139,6 @@ class BooksController extends Controller
        }
    }
 
-
    public function editBook($id)
    {
        if(isset($id) && !empty($id)){
@@ -191,25 +190,25 @@ class BooksController extends Controller
        {
             $chapter = new Chapter();
             $user = Auth::user();
-           foreach ($user->roles as $role){
-
-               if($role->name == 'author' || $role->name == 'admin'){
-                   $chapter->name = $request->namechapter;
-                   $chapter->text = strip_tags($request->textchapter, '<p><a><br />');
-                   $chapter->number = $request->numberchapter;
-                   $chapter->author_id = $user->id;
-                   $chapter->book_id = $request->bookid;
-                   $chapter->save();
-                   $book = Book::find($request->bookid);
-                   $not = new NotificationChapter();
-                   $not->book_id = $request->bookid;
-                   $not->message = 'Автор добавил новую главу к своей книге <a href="/book/'. $book->id .'">'.$book->name.'</a>' ;
-                   $not->read = 0;
-                   $not->save();
-                   return redirect()->back();
-               }else{
-                   return abort(403,'Access Denied');
-               }
+            foreach ($user->roles as $role){
+                $text = str_replace(['<br />'], "</p><p>", $request->textchapter);
+                if($role->name == 'author' || $role->name == 'admin'){
+                    $chapter->name = $request->namechapter;
+                    $chapter->text = strip_tags($text, '<p><a>');
+                    $chapter->number = $request->numberchapter;
+                    $chapter->author_id = $user->id;
+                    $chapter->book_id = $request->bookid;
+                    $chapter->save();
+                    $book = Book::find($request->bookid);
+                    $not = new NotificationChapter();
+                    $not->book_id = $request->bookid;
+                    $not->message = 'Автор добавил новую главу к своей книге <a href="/book/'. $book->id .'">'.$book->name.'</a>' ;
+                    $not->read = 0;
+                    $not->save();
+                    return redirect()->back();
+                }else{
+                    return abort(403,'Access Denied');
+                }
            }
        }
    }
@@ -321,6 +320,7 @@ class BooksController extends Controller
        }
        return abort(404,'not found');
    }
+
    public function getBook($id)
    {
        if(isset($id) && !empty($id))

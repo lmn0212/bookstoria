@@ -25,8 +25,12 @@
                                     <input type="text" class="form-control" name="author" placeholder="Имя автора" value="{{$book->author_name}}" required>
                                 </div>
                                 <div class="form-group custom-file-block col-md-12" style="margin-top: 35px; margin-left: 5px;">
-                                    <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es" required>
-                                    <label class="custom-file-label" for="customFile"></label>
+                                    <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es">
+                                    @if(isset($book->cover))
+                                        <label class="custom-file-label" for="customFile" style="background-image: url('/{{$book->cover}}');"></label>
+                                    @else
+                                        <label class="custom-file-label" for="customFile"></label>
+                                    @endif
                                 </div>
                                 <div class="form-group col-md-12">
                                     <textarea class="form-control" id="annotacia" rows="8" name="annotation" placeholder="Аннотации"  required>{{$book->annotation}}</textarea>

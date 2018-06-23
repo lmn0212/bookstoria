@@ -60,7 +60,6 @@
                                // Выводим элементы управления
                 showPagination($(paginatePages).length);
             };
-            console.log($(paginatePages).length);
 
             // Функция обновления счетчика
             updateCounter = function(i) {

@@ -41,7 +41,7 @@ class ChaptersController extends Controller
                                 $out[] = '<p>'.$c.'</p>'.chr(10);
                             }
                         }*/
-                        $out =  strip_tags($chapter->text,'<p>');
+                        $out =  strip_tags($chapter->text,'<p><a><br>');
                         return view('pages.chapter',[
                             'page'=>$b,
                             'cols'=>$cols,
@@ -113,7 +113,7 @@ class ChaptersController extends Controller
                             $out[] = '<p>'.$c.'</p>'.chr(10);
                         }
                     }*/
-                    $out = strip_tags($chapter->text,'<p>');
+                    $out = strip_tags($chapter->text,'<p><a><br>');
                     return view('pages.chapter',[
                         'page'=>$b,
                         'cols'=>$cols,
@@ -151,7 +151,7 @@ class ChaptersController extends Controller
                        $out[] = '<p>'.$c.'</p>'.chr(10);
                    }
                }*/
-               $out =  strip_tags($chapter->text,'<p>');
+               $out =  strip_tags($chapter->text,'<p><a><br>');
                if(isset($b) && !empty($b))
                {
                    return view('pages.chapter',[
@@ -178,4 +178,5 @@ class ChaptersController extends Controller
            }
        }
    }
+
 }

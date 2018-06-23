@@ -9,6 +9,29 @@
  * @version 0.0.2
  */
 
+var stepTime = 20;
+var docBody = document.body;
+var focElem = document.documentElement;
+
+var scrollAnimationStep = function (initPos, stepAmount) {
+    var newPos = initPos - stepAmount > 0 ? initPos - stepAmount : 0;
+
+    docBody.scrollTop = focElem.scrollTop = newPos;
+
+    newPos && setTimeout(function () {
+        scrollAnimationStep(newPos, stepAmount);
+    }, stepTime);
+};
+
+var scrollTopAnimated = function (speed) {
+    var topOffset = docBody.scrollTop || focElem.scrollTop;
+    var stepAmount = topOffset;
+
+    speed && (stepAmount = (topOffset * stepTime)/speed);
+
+    scrollAnimationStep(topOffset, stepAmount);
+};
+
 (function (root, factory) {
     if (typeof exports === "object" && typeof module === 'object') {
         module.exports = factory();
@@ -75,6 +98,8 @@
                 } else if (self.value != +el.innerHTML) {
                     self.value = +el.innerHTML;
                     self._callback && self._callback(self.value);
+                    // document.body.scrollTop = document.documentElement.scrollTop = 0;
+                    scrollTopAnimated(500);
                 }
             }, false);
             this.value = this.params.current;

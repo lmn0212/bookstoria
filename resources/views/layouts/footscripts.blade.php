@@ -112,8 +112,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
 	$(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+        $('.js-example-basic-multiple').select2();
+
+        // $('.pagination li a').on('click', function () {
+        //     console.log('test');
+        //     var li = this.parent('li');
+        //     if(li.className != 'disabled' || li.className != 'active' || li.className != 'next' || li.className != 'last'){
+        //         document.body.scrollTop = document.documentElement.scrollTop = 0;
+        //     }
+        // });
+    });
 </script>
 
 @if(Route::currentRouteName() == 'addchapter' || Route::currentRouteName() == 'editbook')
