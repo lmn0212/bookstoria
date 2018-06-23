@@ -92,8 +92,6 @@ class LoginController extends Controller
      */
     public function findOrCreateUser($user, $provider)
     {
-        //dd($user);
-
         if($provider != 'vkontakte'){
             $authUser = User::where('email', $user->email)->first();
             if ($authUser) {
@@ -107,7 +105,7 @@ class LoginController extends Controller
                 'provider' => $provider,
                 'provider_id' => $user->id
             ]);
-            $users->roles()->attach(4);
+            $users->roles()->attach(3);
             return $users;
         }elseif($provider == 'vkontakte')
         {
@@ -132,7 +130,7 @@ class LoginController extends Controller
                 $users->provider_id = $user->id;
                 $users->save();
 
-                $users->roles()->attach(4);
+                $users->roles()->attach(3);
                 return $users;
             }
 
