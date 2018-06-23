@@ -438,7 +438,7 @@ a:hover {
 	padding:20px;
 }
 .example #content p{
-	line-height:1;
+	line-height: 0.95;
 }
 .example #content .page {
 	position:absolute;
