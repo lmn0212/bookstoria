@@ -35,22 +35,21 @@
 
         <div class="col-12 col-md-8 col-lg-9 content">
 
-            <div class="row justify-content-center wow fadeInUp">
-
+            <div class="row justify-content-center wow fadeInUp novisiblemobile">
                 <div class="col-12">
                     <h2 class="cat-title">Буктрейлеры</h2>
                 </div>
-                    <div class="regulartrailer slick-slider row">
-                        @foreach($tailer as $t)
-                        <div>
-                            <div class="catalog-book-item">
-                                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{$t->booktailer}}" frameborder="0" allowfullscreen></iframe>
-                                <p class="catalog-item-title">Буктрейлер "{{$t->name}}" | {{$t->author_name}}</p>
-                            </div>
+                <div class="regulartrailer slick-slider row">
+                    @foreach($tailer as $t)
+                    <div>
+                        <div class="catalog-book-item">
+                            <iframe width="100%" height="auto" src="https://www.youtube.com/embed/{{$t->booktailer}}" frameborder="0" allowfullscreen></iframe>
+                            <p class="catalog-item-title">Буктрейлер "{{$t->name}}" | {{$t->author_name}}</p>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
+            </div>
 
                 <!-- блок с каруселью -->
                 <div class="row justify-content-center wow fadeInUp">

@@ -61,7 +61,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/competition/all">Конкурсы</a>
                 </li>
-
+                @guest
+                    <li class="nav-item visible_mobile">
+                        <a class="nav-link" href="{{ route('login') }}">Войти</a>
+                    </li>
+                    <li class="nav-item visible_mobile">
+                        <a class="nav-link" href="{{ route('register') }}">Зарегестрироваться</a>
+                    </li>
+                @endguest
             </ul>
 
             <form class="form-inline my-2 my-lg-0" type="GET" action="/search">
@@ -115,24 +122,20 @@
                 <div class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 
                     @guest
-
                         <a class="dropdown-item" href="{{ route('login') }}">Войти</a>
                         <a class="dropdown-item" href="{{ route('register') }}">Зарегестрироваться</a>
-
-                        @else
-                            <a  class="dropdown-item" href="/mybooks" role="button">
-                                {{ Auth::user()->name }}
-                            </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                                Выйти
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-
-
+                    @else
+                        <a  class="dropdown-item" href="/mybooks" role="button">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            Выйти
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     @endguest
 
                 </div>

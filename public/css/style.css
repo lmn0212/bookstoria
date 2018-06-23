@@ -24,6 +24,9 @@ a:hover {
 
 
 }
+.visible_mobile{
+	display: none;
+}
 
 /*Главное меню*/
 	nav {
@@ -36,9 +39,9 @@ a:hover {
 	} 
 	@media (min-width: 950px) {
 		.dropdown:hover > .dropdown-col { 
-	    display: flex;
-	    margin-top: -10px; 
-	} 
+			display: flex;
+			margin-top: -10px;
+		}
 	}
 
 	
@@ -522,10 +525,23 @@ a:hover {
 .uparrow:hover {
 	color: black !important;
 }
-@media (max-width: 760px) {
+/***MEDIA***/
+@media only screen and (max-width: 760px) {
 	.left-sidebar { display: none; }
 	#carouselExampleFade {
 		display: none;
 	}
+	#navbarSupportedContent form input{
+		width: 80%;
+	}
+	.visible_mobile{
+		display: block;
+	}
+	.novisiblemobile{
+		display: none;
+	}
 
-} 
+}
+@media only screen and (min-width: 320px){
+
+}
