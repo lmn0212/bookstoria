@@ -25,7 +25,7 @@ a:hover {
 
 }
 .visible_mobile{
-	display: none;
+	display: none!important;
 }
 
 /*Главное меню*/
@@ -538,7 +538,7 @@ a:hover {
 		width: 80%;
 	}
 	.visible_mobile{
-		display: block;
+		display: block!important;
 	}
 	.novisiblemobile{
 		display: none;

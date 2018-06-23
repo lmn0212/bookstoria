@@ -71,7 +71,7 @@
                 @endguest--}}
             </ul>
             <!-- Sign up -->
-            <div class="dropdown">
+            <div class="dropdown visible_mobile">
                 <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user"></i>
                 </button>
@@ -133,7 +133,31 @@
                 </ul>
             </div>--}}
         @endif
+        <!-- Sign up -->
+            <div class="dropdown novisiblemobile">
+                <button class="btn btn-secondary dropdown-toggle menu-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="dropdown-menu icon-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 
+                    @guest
+                        <a class="dropdown-item" href="{{ route('login') }}">Войти</a>
+                        <a class="dropdown-item" href="{{ route('register') }}">Зарегестрироваться</a>
+                    @else
+                        <a  class="dropdown-item" href="/mybooks" role="button">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            Выйти
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
+                </div>
+            </div>
         </div>
     </nav>
 </header>
