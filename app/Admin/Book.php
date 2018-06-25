@@ -4,6 +4,7 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 use App\Category;
 use App\Collection;
 use App\Tag;
+
 AdminSection::registerModel(\App\Book::class, function (ModelConfiguration $model) {
     $model->setTitle('Книги');
     $model->setCreateTitle('Создание книги');
@@ -11,7 +12,7 @@ AdminSection::registerModel(\App\Book::class, function (ModelConfiguration $mode
 
     // Display
     $model->onDisplay(function () {
-        $display = AdminDisplay::datatables()
+        $display = AdminDisplay::datatablesAsync()
             ->setHtmlAttribute('class', 'table-primary')
             ->setDisplaySearch(true)
             ->with('categories','collections')
@@ -22,7 +23,7 @@ AdminSection::registerModel(\App\Book::class, function (ModelConfiguration $mode
                 AdminColumn::lists('categories.name')->setLabel('Категории'),
                 AdminColumn::lists('collections.name')->setLabel('Тематические подборки'),
                 AdminColumn::text('tags')->setLabel('Теги'),
-                AdminColumn::text('created_at')->setLabel('Дата создания')
+                AdminColumn::datetime('created_at')->setLabel('Дата создания')
             ])->paginate(20);
 
         return $display;

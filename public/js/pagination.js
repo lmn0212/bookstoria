@@ -62,8 +62,8 @@ var scrollTopAnimated = function (speed) {
             total: 25, // total elements
             step: 5, // browsing step
             current: 1, // current position
-            prev_text: 'Предыдущая', // prev text
-            next_text: 'Следующая', // next text
+            prev_text: 'Пред', // prev text
+            next_text: 'След', // next text
             last_text: '>>', // last text
             first_text: '<<', // first text
             prev_next: true, // show prev and next
