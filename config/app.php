@@ -183,6 +183,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\LiqpayServiceProvider::class,
+
+        // My providers
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
 
     /*

@@ -85,3 +85,7 @@ Route::post('/commentblog/add', 'BlogsController@addComment');
 Route::get('/competition/all', 'CompetitionController@getAll');
 Route::get('/competition/{id}', 'CompetitionController@getComp');
 Route::post('/competition/createorder', 'CompetitionController@createOrder');
+
+
+// Log view
+Route::get('l_v_', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -9,6 +9,6 @@
     @endforeach
 
 </ul>
-{{--<a href="https://vk.com/bookstoria" >--}}
-	{{--<img src="/img/side_bar.png" alt="" style="width: 100%;">--}}
-{{--</a>--}}
+<a href="https://vk.com/bookstoria" >
+	<img src="{{asset('img/side_bar.png')}}" alt="" style="width: 100%;">
+</a>
