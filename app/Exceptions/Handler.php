@@ -3,7 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
+use HttpException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Intervention\Image\Exception\NotReadableException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,6 +53,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof QueryException) {
+            return back()->withInput();
+        }if ($exception instanceof NotFoundHttpException) {
+            return back()->withInput();
+        }if ($exception instanceof MethodNotAllowedHttpException) {
+            return back()->withInput();
+        }if ($exception instanceof HttpException) {
+            return back()->withInput();
+        }if ($exception instanceof NotReadableException) {
+            return back()->withInput();
+        }
         return parent::render($request, $exception);
     }
 }
