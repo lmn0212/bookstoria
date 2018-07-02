@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Banner;
 use App\Book;
 use App\Category;
 use App\Collection;
@@ -47,6 +48,7 @@ class PagesController extends Controller
         $com =  Book::has('comments')->get();
         //dd($com);
         $cats = Category::all();
+        $banners = Banner::all();
         $cols =  Collection::all();
         $foot = FooterMenu::all();
         $tailer = Book::where('booktailer','!=',NULL)->get();
@@ -56,6 +58,7 @@ class PagesController extends Controller
         }
         return view('welcome',[
             'books' => $books,
+            'banners' => $banners,
             'cats'=>$cats,
             'cols'=>$cols,
             'tailer'=>$tailer,

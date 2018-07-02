@@ -3,17 +3,18 @@
 @section('content')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="d-block w-100 slider-item" style="background-image: url(img/banner1.JPG)">
 
-            </div>
-        </div>
+        @if(count($banners) > 0)
+            @foreach($banners as $banner)
+                @if($banner->public == '1')
+                    <div class="carousel-item {{($loop->first)?'active':''}}">
+                        <div class="d-block w-100 slider-item" style="background-image: url({{asset($banner->image)}});">
 
-        <div class="carousel-item">
-            <div class="d-block w-100 slider-item" style="background-image: url(img/banner2.jpg)">
-            </div>
-        </div>
-
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        @endif
         <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
