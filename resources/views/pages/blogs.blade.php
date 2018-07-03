@@ -25,10 +25,9 @@
                                     <div class="col-12 col-md-9">
                                         <a href="/blog/{{$b->id}}"><h4 class="blog-title">{{$b->name}}</h4></a>
                                         <h5 class="blog-title">{{$b->user->name}}</h5>
-
-                                        <p>  {{ $b->text }}
-
-                                        </p>
+                                        <div>
+                                            {!! str_limit($b->text, 250) !!}
+                                        </div>
                                         <div class="blog-panel">
                                             <div class="blog-stat">
                                                 <p class="book-tags">Дата публикации: {{$b->created_at}}</p>

@@ -25,7 +25,7 @@
 
                     </div>
                     <div class="col-12">
-                        <p>{{ $blog->text }}</p>
+                        {!! $blog->text !!}
                     </div>
                 @if(\Illuminate\Support\Facades\Auth::check())
 

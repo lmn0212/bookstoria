@@ -14,7 +14,7 @@
                 </div>
 
                 @foreach($books as $c)
-                    @if(isset($c) && !empty($c))
+                    @if(isset($c) && !empty($c) && $c->public == '1')
 
                             <div class="row wow mar-15 fadeInUp justify-content-center">
                                 <div class="col-5 col-md-3 catalog-item-col">

@@ -13,6 +13,7 @@
                     <h2 class="cat-title">{{$cat->name}}</h2>
                 </div>
                 @foreach($books as $book)
+                    @if($book->public == '1')
                     <div class="row wow mar-15  fadeInUp justify-content-center">
                         <div class="col-5 col-md-3 catalog-item-col">
                             <div class="catalog-book-item">
@@ -51,6 +52,7 @@
 
                         </div>
                     </div>
+                    @endif
                 @endforeach
             </div>
         </div>
