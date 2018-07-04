@@ -33,7 +33,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                {{--<tr>
                                     <th scope="row">За день</th>
                                     <td>{{$b->views_day}}</td>
                                     <td>{{$b->order_day}}</td>
@@ -50,7 +50,7 @@
                                     <td>{{$b->views_month}}</td>
                                     <td>{{$b->order_month}}</td>
                                     <td>{{$b->comment_month}}</td>
-                                </tr>
+                                </tr>--}}
                                 <tr>
                                     <th scope="row">Всего</th>
                                     <td>{{$b->count_views}}</td>
