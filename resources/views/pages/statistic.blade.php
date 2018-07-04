@@ -15,7 +15,6 @@
                 @foreach($book as $b)
                     <div class="row wow fadeInUp no-gutters justify-content-center">
 
-
                         <div class="col-5 col-md-3 catalog-item-col">
                             <div class="catalog-book-item">
                                 <img src="{{$b->cover}}" width="100%" height="auto">
@@ -55,8 +54,8 @@
                                 <tr>
                                     <th scope="row">Всего</th>
                                     <td>{{$b->count_views}}</td>
-                                    <td>{{$b->orders->count()}}</td>
-                                    <td>{{$b->comments->count()}}</td>
+                                    <td>{{$b->order_total}}</td>
+                                    <td>{{$b->comment_total}}</td>
                                 </tr>
                                 </tbody>
                             </table>

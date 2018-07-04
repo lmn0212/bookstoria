@@ -114,12 +114,16 @@ class PagesController extends Controller
                     $views = Book::where('updated_at','>=',$day)->where('author_id',$user->id)->get();
                     $views1 = Book::where('updated_at','>=',$week)->where('author_id',$user->id)->get();
                     $views2 = Book::where('updated_at','>=',$month)->where('author_id',$user->id)->get();
-                    $order = Order::where('created_at','>=',$day)->where('book_id',$b->id)->get();
-                    $order1 = Order::where('created_at','>=',$week)->where('book_id',$b->id)->get();
-                    $order2 = Order::where('created_at','>=',$month)->where('book_id',$b->id)->get();
+
+                    $order = Order::where('created_at','>=',$day)->where('book_id',$b->id)->where('result', 'success')->get();
+                    $order1 = Order::where('created_at','>=',$week)->where('book_id',$b->id)->where('result', 'success')->get();
+                    $order2 = Order::where('created_at','>=',$month)->where('book_id',$b->id)->where('result', 'success')->get();
+                    $order3 = Order::where('book_id',$b->id)->where('result', 'success')->get();
+
                     $comment = Comment::where('created_at','>=',$day)->where('book_id',$b->id)->get();
                     $comment1 = Comment::where('created_at','>=',$week)->where('book_id',$b->id)->get();
                     $comment2 = Comment::where('created_at','>=',$month)->where('book_id',$b->id)->get();
+                    $comment3 = Comment::where('book_id',$b->id)->get();
 
                     $b->views_day = $views->count();
                     $b->views_week = $views1->count();
@@ -128,12 +132,14 @@ class PagesController extends Controller
                     $b->order_day = $order->count();
                     $b->order_week = $order1->count();
                     $b->order_month = $order2->count();
+                    $b->order_total = $order3->count();
 
                     $b->comment_day = $comment->count();
                     $b->comment_week = $comment1->count();
                     $b->comment_month = $comment2->count();
+                    $b->comment_total = $comment3->count();
                 }
-                //dd($book);
+//                dd($book);
                 return view('pages.statistic',[
                     'book'=>$book,
                     'cats'=>$cats,
