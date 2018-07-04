@@ -26,21 +26,9 @@ class ChaptersController extends Controller
                 if($b->chapter_count > 0){
                     $chapters = $b->chapters($chapter)->get();
                     $chapter = Chapter::find($chapter);
-                    $out = array();
-                    if($chapter->number < $b->chapter_count)
+                    $paybook = Order::where('book_id', $book)->where('result', 'success')->first();
+                    if($chapter->number < $b->chapter_count || $paybook)
                     {
-
-                       // dd($out);
-                        /*if(strripos($chapter->text, '<div>') || strripos($chapter->text, '<p>')){
-                            $out = explode("\n", $chapter->text);
-                        }else{
-                            $chap =  preg_split("/[.?!] /", $chapter->text);
-                            foreach($chap as $c)
-                            {
-
-                                $out[] = '<p>'.$c.'</p>'.chr(10);
-                            }
-                        }*/
                         $out =  strip_tags($chapter->text,'<p><a><br>');
                         return view('pages.chapter',[
                             'page'=>$b,
@@ -102,17 +90,6 @@ class ChaptersController extends Controller
                 }else{
                     $chapters = $b->chapters($chapter)->get();
                     $chapter = Chapter::find($chapter);
-                    $out = array();
-                   /* if(strripos($chapter->text, '<div>') || strripos($chapter->text, '<p>')){
-                        $out = explode("\n", $chapter->text);
-                    }else{
-                        $chap =  preg_split("/[.?!] /", $chapter->text);
-                        foreach($chap as $c)
-                        {
-
-                            $out[] = '<p>'.$c.'</p>'.chr(10);
-                        }
-                    }*/
                     $out = strip_tags($chapter->text,'<p><a><br>');
                     return view('pages.chapter',[
                         'page'=>$b,
