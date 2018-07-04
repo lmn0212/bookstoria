@@ -111,32 +111,32 @@ class PagesController extends Controller
             {
                 foreach ($book as $b) {
 
-                    $views = Book::where('updated_at','>=',$day)->where('author_id',$user->id)->get();
-                    $views1 = Book::where('updated_at','>=',$week)->where('author_id',$user->id)->get();
-                    $views2 = Book::where('updated_at','>=',$month)->where('author_id',$user->id)->get();
+//                    $views = Book::where('updated_at','>=',$day)->where('author_id',$user->id)->get();
+//                    $views1 = Book::where('updated_at','>=',$week)->where('author_id',$user->id)->get();
+//                    $views2 = Book::where('updated_at','>=',$month)->where('author_id',$user->id)->get();
 
-                    $order = Order::where('created_at','>=',$day)->where('book_id',$b->id)->where('result', 'success')->get();
-                    $order1 = Order::where('created_at','>=',$week)->where('book_id',$b->id)->where('result', 'success')->get();
-                    $order2 = Order::where('created_at','>=',$month)->where('book_id',$b->id)->where('result', 'success')->get();
+//                    $order = Order::where('created_at','>=',$day)->where('book_id',$b->id)->where('result', 'success')->get();
+//                    $order1 = Order::where('created_at','>=',$week)->where('book_id',$b->id)->where('result', 'success')->get();
+//                    $order2 = Order::where('created_at','>=',$month)->where('book_id',$b->id)->where('result', 'success')->get();
                     $order3 = Order::where('book_id',$b->id)->where('result', 'success')->get();
 
-                    $comment = Comment::where('created_at','>=',$day)->where('book_id',$b->id)->get();
-                    $comment1 = Comment::where('created_at','>=',$week)->where('book_id',$b->id)->get();
-                    $comment2 = Comment::where('created_at','>=',$month)->where('book_id',$b->id)->get();
+//                    $comment = Comment::where('created_at','>=',$day)->where('book_id',$b->id)->get();
+//                    $comment1 = Comment::where('created_at','>=',$week)->where('book_id',$b->id)->get();
+//                    $comment2 = Comment::where('created_at','>=',$month)->where('book_id',$b->id)->get();
                     $comment3 = Comment::where('book_id',$b->id)->get();
 
-                    $b->views_day = $views->count();
-                    $b->views_week = $views1->count();
-                    $b->views_month = $views2->count();
+//                    $b->views_day = $views->count();
+//                    $b->views_week = $views1->count();
+//                    $b->views_month = $views2->count();
 
-                    $b->order_day = $order->count();
-                    $b->order_week = $order1->count();
-                    $b->order_month = $order2->count();
+//                    $b->order_day = $order->count();
+//                    $b->order_week = $order1->count();
+//                    $b->order_month = $order2->count();
                     $b->order_total = $order3->count();
 
-                    $b->comment_day = $comment->count();
-                    $b->comment_week = $comment1->count();
-                    $b->comment_month = $comment2->count();
+//                    $b->comment_day = $comment->count();
+//                    $b->comment_week = $comment1->count();
+//                    $b->comment_month = $comment2->count();
                     $b->comment_total = $comment3->count();
                 }
 //                dd($book);
@@ -178,9 +178,11 @@ class PagesController extends Controller
         {
             $user = Auth::user();
             $orders = Order::where('author_id', Auth::user()->id)->where('result', 'success')->get();
+            $sum = $orders->sum('summ');
 //            dd($orders);
             return view('pages.finance',[
                 'orders'    => $orders,
+                'sum'       => $sum,
                 'cats'      => $cats,
                 'cols'      => $cols,
                 'user'      => $user,

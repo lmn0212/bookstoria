@@ -39,6 +39,12 @@
                                 </tr>
                                 @endif
                             @endforeach
+                            <tr>
+                                <th scope="row">Всего</th>
+                                <td>{{$sum}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         @endif
 
                         </tbody>
