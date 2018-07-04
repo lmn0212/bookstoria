@@ -27,6 +27,7 @@ class OrderController extends Controller
 
            $order = new Order();
            $order->user_id = Auth::user()->id;
+            $order->author_id = $book->author->id;
            $order->book_id = $id;
            $order->ip = $request->ip();
            $order->description = 'Покупка книги '. $book->name;
