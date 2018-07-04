@@ -52,9 +52,8 @@ class ChaptersController extends Controller
                         ]);
                     }else{
                         if(Auth::user()){
-                            $us = Auth::user()->id;
                             $order = new Order();
-                            $order->user_id = $us;
+                            $order->user_id = Auth::user()->id;
                             $order->book_id = $b->id;
                             $order->save();
                             $book = Book::find($b->id);

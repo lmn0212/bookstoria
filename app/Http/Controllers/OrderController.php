@@ -16,7 +16,7 @@ class OrderController extends Controller
 {
     public function createOrder(Request $request, $id)
     {
-        if (session()->get('order_id')){
+        if (session()->has('order_id')){
             session()->forget('order_id');
         }
         if(Auth::user() && isset($id) && !empty($id)){

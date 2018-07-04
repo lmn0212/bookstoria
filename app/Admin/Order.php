@@ -20,7 +20,7 @@ AdminSection::registerModel(\App\Order::class, function (ModelConfiguration $mod
                 AdminColumn::text('summ')->setLabel('Цена')->setWidth(50),
                 AdminColumn::text('currency')->setLabel('Валюта')->setWidth(50),
                 AdminColumn::text('payment_id')->setLabel('ID операции'),
-                //AdminColumn::text('result')->setLabel('Статус'),
+                AdminColumn::text('result')->setLabel('Статус'),
                 //AdminColumn::text('paytype')->setLabel('Тип платежа'),
                 AdminColumn::text('liqpay_order_id')->setLabel('ID Liqpay платежа'),
                 AdminColumn::text('description')->setLabel('Описание платежа'),

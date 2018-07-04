@@ -30,12 +30,14 @@
                         <tbody>
                         @if(isset($user->orders))
                             @foreach($user->orders as $order)
+                                @if($order->result == 'success')
                                 <tr>
                                     <th scope="row">{{$order->created_at}}</th>
                                     <td>{{$order->summ}}</td>
                                     <td>{{$order->paytype}}</td>
                                     <td>{{$order->description}}</td>
                                 </tr>
+                                @endif
                             @endforeach
                         @endif
 

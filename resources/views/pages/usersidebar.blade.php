@@ -8,6 +8,6 @@
     {{--<a class="list-group-item side-item">Уведомления</a>--}}
 
     <a class="list-group-item side-item" href="/mylibrary">Моя библиотека</a>
-    <a class="list-group-item side-item" href="/myfinance">Мои финансы</a>
+    <a class="list-group-item side-item" href="/myfinance">Мои покупки</a>
 
 </ul>
