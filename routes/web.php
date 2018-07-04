@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Statistic
     Route::get('/statistic', 'PagesController@Statistic');
+    Route::get('/mypurchases', 'PagesController@myPurchases');
     Route::get('/myfinance', 'PagesController@myFinance');
 
 });

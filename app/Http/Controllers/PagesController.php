@@ -146,6 +146,24 @@ class PagesController extends Controller
         }
     }
 
+    public function myPurchases()
+    {   $cats = Category::all();
+        $cols = Collection::all();
+        $foot = FooterMenu::all();
+        if(Auth::user())
+        {
+            $user = Auth::user();
+            return view('pages.purchases',[
+                'cats'=>$cats,
+                'cols'=>$cols,
+                'user'=>$user,
+                'foot'=>$foot,
+            ]);
+        }else{
+            return abort(403, 'Access Denied');
+        }
+    }
+
     public function myFinance()
     {   $cats = Category::all();
         $cols = Collection::all();
@@ -153,11 +171,14 @@ class PagesController extends Controller
         if(Auth::user())
         {
             $user = Auth::user();
+            $mybooks = Book::where('author_id', $user->id)->pluck('id');
+            $orders = Order::whereIn('id', $mybooks)->get();
             return view('pages.finance',[
-                'cats'=>$cats,
-                'cols'=>$cols,
-                'user'=>$user,
-                'foot'=>$foot,
+                'orders'    => $orders,
+                'cats'      => $cats,
+                'cols'      => $cols,
+                'user'      => $user,
+                'foot'      => $foot,
             ]);
         }else{
             return abort(403, 'Access Denied');

@@ -12,7 +12,7 @@
                 <div class="row wow justify-content-center">
 
                     <div class="col-12">
-                        <h2 class="cat-title">Мои финансы</h2>
+                        <h2 class="cat-title">Мои покупки</h2>
                     </div>
                     <div class="col-12">
                         <h2 class="cat-title">История операций</h2>
@@ -28,8 +28,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if(isset($orders))
-                            @foreach($orders as $order)
+                        @if(isset($user->orders))
+                            @foreach($user->orders as $order)
                                 @if($order->result == 'success')
                                 <tr>
                                     <th scope="row">{{$order->created_at}}</th>
