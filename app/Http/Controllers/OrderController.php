@@ -71,6 +71,8 @@ class OrderController extends Controller
                 'order_id'      => $sess
             ));
 
+            dd($res);
+
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
                 $order->payment_id = $res->payment_id;
