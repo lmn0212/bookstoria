@@ -71,7 +71,7 @@ class OrderController extends Controller
                 'order_id'      => $sess
             ));
 
-            dd($res);
+            dd($res, $sess, $liqpay);
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
