@@ -172,7 +172,8 @@ class PagesController extends Controller
         {
             $user = Auth::user();
             $mybooks = Book::where('author_id', $user->id)->pluck('id');
-            $orders = Order::whereIn('id', $mybooks)->get();
+            $orders = Order::whereIn('book_id', $mybooks)->where('result', 'success')->get();
+//            dd($orders);
             return view('pages.finance',[
                 'orders'    => $orders,
                 'cats'      => $cats,
