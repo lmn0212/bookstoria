@@ -16,8 +16,8 @@ class OrderController extends Controller
 {
     public function createOrder(Request $request, $id)
     {
-        if (session()->get('order_id')){
-            session()->forget('order_id');
+        if ($request->session()->has('order_id')){
+            $request->session()->forget('order_id');
         }
         if(Auth::user() && isset($id) && !empty($id)){
            $book = Book::find($id);
@@ -35,7 +35,7 @@ class OrderController extends Controller
            $order->save();
 
            if(isset($order) && isset($book) && !empty($book)){
-               session()->put('order_id', $order->id);
+               $request->session()->put('order_id', $order->id);
                $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
                $html = $liqpay->cnb_form(array(
                    'action'         => 'pay',
@@ -60,7 +60,7 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request)
     {
-        $sess = session()->get('order_id');
+        $sess = $request->session()->get('order_id');
 
         if(isset($sess) && !empty($sess))
         {
