@@ -20,19 +20,19 @@ class OrderController extends Controller
             $request->session()->forget('order_id');
         }
         if(Auth::user() && isset($id) && !empty($id)){
-           $book = Book::find($id);
-           $cats = Category::all();
-           $cols = Collection::all();
-           $foot = FooterMenu::all();
+            $book = Book::find($id);
+            $cats = Category::all();
+            $cols = Collection::all();
+            $foot = FooterMenu::all();
 
-           $order = new Order();
-           $order->user_id = Auth::user()->id;
+            $order = new Order();
+            $order->user_id = Auth::user()->id;
             $order->author_id = $book->author->id;
-           $order->book_id = $id;
-           $order->ip = $request->ip();
-           $order->description = 'Покупка книги '. $book->name;
-           $order->result = 'create';
-           $order->save();
+            $order->book_id = $id;
+            $order->ip = $request->ip();
+            $order->description = 'Покупка книги '. $book->name;
+            $order->result = 'create';
+            $order->save();
 
            if(isset($order) && isset($book) && !empty($book)){
                $request->session()->put('order_id', $order->id);
@@ -71,7 +71,7 @@ class OrderController extends Controller
                 'order_id'      => $sess
             ));
 
-            dd($res, $sess, $liqpay);
+//            dd($res, $sess, $liqpay);
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
