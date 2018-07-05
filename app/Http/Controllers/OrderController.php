@@ -8,6 +8,7 @@ use App\Collection;
 use App\FooterMenu;
 use App\Order;
 use App\Providers\LiqpayServiceProvider;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LiqPay;
@@ -24,6 +25,7 @@ class OrderController extends Controller
             $cats = Category::all();
             $cols = Collection::all();
             $foot = FooterMenu::all();
+            $user = User::find(Auth::user()->id);
 
             $order = new Order();
             $order->user_id = Auth::user()->id;
@@ -36,6 +38,8 @@ class OrderController extends Controller
 
            if(isset($order) && isset($book) && !empty($book)){
                $request->session()->put('order_id', $order->id);
+               $user->order_id = $order->id;
+               $user->save();
                $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
                $html = $liqpay->cnb_form(array(
                    'action'         => 'pay',
@@ -60,8 +64,9 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request)
     {
-        $sess = $request->session()->get('order_id');
-
+//        $sess = $request->session()->get('order_id');
+        $user = User::find(Auth::user()->id);
+        $sess = $user->order_id;
         if(isset($sess) && !empty($sess))
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
@@ -71,7 +76,7 @@ class OrderController extends Controller
                 'order_id'      => $sess
             ));
 
-//            dd($res, $sess, $liqpay);
+            dd($res, $user, $sess, $liqpay);
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
