@@ -71,7 +71,7 @@ class OrderController extends Controller
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
             $res = $liqpay->api("request", array(
-                'action'        => 'pay',
+                'action'        => 'status',
                 'version'       => '3',
                 'order_id'      => $sess
             ));
