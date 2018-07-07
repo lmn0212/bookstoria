@@ -71,12 +71,12 @@ class OrderController extends Controller
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
             $res = $liqpay->api("checkout", array(
-                'action'        => 'status',
+                'action'        => 'pay',
                 'version'       => '3',
                 'order_id'      => $sess
             ));
 
-//            dd($res, $user, $sess, $liqpay);
+            dd($res, $user, $sess, $liqpay);
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
