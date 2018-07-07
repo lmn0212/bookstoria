@@ -76,7 +76,7 @@ class OrderController extends Controller
                 'order_id'      => $sess
             ));
 
-            dd($res, $user, $sess, $liqpay);
+//            dd($res, $user, $sess, $liqpay);
 
             if(isset($res) && !empty($res)){
                 $order = Order::find($res->order_id);
@@ -89,6 +89,10 @@ class OrderController extends Controller
                 $order->summ = $res->amount;
                 $order->currency = $res->currency;
                 $order->save();
+
+                $user->order_id = null; // сбрасываем номер заказа
+                $user->save();
+
                 return redirect(route('getbook', ['id' => $order->book_id]));
             }
 
