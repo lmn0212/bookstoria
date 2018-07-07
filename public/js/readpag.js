@@ -1,10 +1,10 @@
 (function($){
-    var script = document.createElement("SCRIPT"),
-        head = document.getElementsByTagName( "head" )[ 0 ];
+    // var script = document.createElement("SCRIPT"),
+    //     head = document.getElementsByTagName( "head" )[ 0 ];
 
-    script.type = "text/javascript";
-    script.src = '/js/pagination.js';
-    head.appendChild( script );
+    // script.type = "text/javascript";
+    // script.src = '/js/pagination.js';
+    // head.appendChild( script );
 
     $.fn.extend({
         MyPagination: function(options) {
