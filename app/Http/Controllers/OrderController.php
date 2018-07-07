@@ -73,7 +73,7 @@ class OrderController extends Controller
             $res = $liqpay->api("request", array(
                 'action'        => 'status',
                 'version'       => '3',
-                'order_id'      => $sess
+                'order_id'      => $request->transaction_id
             ));
 
             dd($res, $user, $sess, $liqpay);
