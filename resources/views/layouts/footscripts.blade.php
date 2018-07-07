@@ -82,7 +82,7 @@
 <script type="text/javascript" src="{{asset('js/wow.min.js')}}"></script>
 
 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'readbook' || \Illuminate\Support\Facades\Route::current()->getName() === 'readchapter')
-	<script type="text/javascript" src="{{asset('js/readpag.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/readpag.js?v=1.1')}}"></script>
 	<script>
         jQuery(window).load(function() {
             $('#content').MyPagination({height: 800, fadeSpeed: 400});
