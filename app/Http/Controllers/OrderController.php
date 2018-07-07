@@ -70,7 +70,7 @@ class OrderController extends Controller
         if(isset($sess) && !empty($sess))
         {
             $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'), env('LIQPAY_PRIVATE_KEY'));
-            $res = $liqpay->api("request", array(
+            $res = $liqpay->api("checkout", array(
                 'action'        => 'status',
                 'version'       => '3',
                 'order_id'      => $sess
