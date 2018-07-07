@@ -46,9 +46,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mypurchases', 'PagesController@myPurchases');
     Route::get('/myfinance', 'PagesController@myFinance');
 
+    //Orders
+    Route::post('/order/accept','OrderController@acceptOrder');
+
 });
-//Orders
-Route::post('/order/accept','OrderController@acceptOrder');
 
 //book
 Route::get('/book/{id}', 'BooksController@getBook')->name('getbook');
