@@ -109,7 +109,7 @@
                                 @if(Auth::user() && $book->price > 0 && $book->chapter_count > 0)
                                     @if(!isset($payment))
                                         @if(isset($book->complete) && $book->complete == 1)
-                                            <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success">Купить за {{$book->price}} &#8381;</a >
+                                            <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success" id="order_create" book-id="{{$book->id}}">Купить за {{$book->price}} &#8381;</a >
                                         @else
                                             <a href="/order/create/{{$book->id}}" class="btn book-btn btn-success">Подписаться за {{$book->price}} &#8381;</a>
                                         @endif

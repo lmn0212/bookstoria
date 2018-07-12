@@ -112,8 +112,11 @@ class ChaptersController extends Controller
            $cats = Category::all();
            $cols = Collection::all();
            $foot = FooterMenu::all();
+           $chapters = false;
            $b = Book::find($book);
-           $chapters = $b->chapters()->get();
+           if ($b->chapters()){
+               $chapters = $b->chapters()->get();
+           }
            $chapter = Chapter::where('book_id',$b->id)->first();
 
            $out = array();

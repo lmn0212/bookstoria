@@ -13,10 +13,11 @@
                 <h5>Главы</h5>
 
                 <ul class="list-group list-group-flush">
-                    @foreach($chapter as $cat)
-                        <a class="list-group-item side-item" href="/chapter/read/{{$page->id}}/{{$cat->id}}">{{$cat->name}}</a>
-                    @endforeach
-
+                    @if(count($chapter))
+                        @foreach($chapter as $cat)
+                            <a class="list-group-item side-item" href="/chapter/read/{{$page->id}}/{{$cat->id}}">{{$cat->name}}</a>
+                        @endforeach
+                    @endif
                 </ul>
 
             </div>

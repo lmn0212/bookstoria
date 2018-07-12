@@ -80,6 +80,7 @@
 
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wow.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/ajax.js')}}"></script>
 
 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'readbook' || \Illuminate\Support\Facades\Route::current()->getName() === 'readchapter')
 	<script type="text/javascript" src="{{asset('js/readpag.js?v=1.1')}}"></script>
@@ -134,3 +135,47 @@
         CKEDITOR.replace( 'annotacia' );
     </script>
 @endif
+
+
+{{--Modals--}}
+<div class="modal fade" id="modalCreateOrder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-title text-center" id="myModalLabel">Подтверждение платежа</h4>
+                <p class="text-center">Выберите способ оплаты:</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="https://secure.platononline.com/payment/auth" method="post">
+                                @csrf
+                                <input type="hidden" name="payment" value=""/>
+                                <input type="hidden" name="key" value=""/>
+                                <input type="hidden" name="url" value=""/>
+                                <input type="hidden" name="data" value=""/>
+                                <input type="hidden" name="sign" value=""/>
+                                <input type="hidden" name="ext1" value=""/>
+                                <input type="hidden" name="ext2" value=""/>
+                                <p>
+                                    <button type="submit" class="btn btn-primary payment_btn" id="platon_btn">Platon <span></span></button>
+                                </p>
+                            </form>
+                            {{--<form action="">
+                                <input type="hidden" name="summ">
+                                <p>
+                                    <button type="button" class="btn btn-primary payment_btn" id="platon_btn">Platon 2 <span></span></button>
+                                </p>
+                            </form>--}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

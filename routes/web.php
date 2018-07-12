@@ -32,7 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mylibrary', 'LibraryController@libraryGet')->name('lib');
     Route::get('/library/delete/{id}', 'LibraryController@delete')->name('libdel');
     //Orders
-    Route::get('/order/create/{id}', 'OrderController@createOrder');
+    Route::get('/order/create/{id}', 'OrderController@createOrder')->name('create_order');
+    Route::post('/order/accept/platon','OrderController@acceptOrder');
     //Blogs
     Route::get('/myblogs', 'BlogsController@myBlogs');
     Route::get('/blog/add', 'BlogsController@addBlog');
@@ -45,9 +46,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/statistic', 'PagesController@Statistic');
     Route::get('/mypurchases', 'PagesController@myPurchases');
     Route::get('/myfinance', 'PagesController@myFinance');
-
-    //Orders
-    Route::post('/order/accept','OrderController@acceptOrder');
 
 });
 
