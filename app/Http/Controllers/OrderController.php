@@ -134,5 +134,8 @@ class OrderController extends Controller
         $user->order_id = null; // сбрасываем номер заказа
         $user->save();
 
+        return response('success', 200)
+            ->header('Content-Type', 'text/plain');
+
     }
 }
