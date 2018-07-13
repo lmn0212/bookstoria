@@ -22,9 +22,9 @@ class OrderController extends Controller
         }
         if(Auth::user() && isset($id) && !empty($id)){
             $book = Book::find($id);
-            $cats = Category::all();
-            $cols = Collection::all();
-            $foot = FooterMenu::all();
+//            $cats = Category::all();
+//            $cols = Collection::all();
+//            $foot = FooterMenu::all();
             $user = User::find(Auth::user()->id);
 
             $order = Order::firstOrNew(['book_id' => $id, 'user_id' => Auth::user()->id, 'result' => 'create']);
@@ -39,7 +39,7 @@ class OrderController extends Controller
 
             // Формируем данные для отправки на Платон
             $summ_proc = ($order->summ/100)*env('PROC_PLATON')+$order->summ;
-            $summ = number_format(($summ_proc)/env('KURS_PLATON'), 2, '.', '');
+            $summ = number_format(($summ_proc)*env('KURS_PLATON'), 2, '.', '');
             $pass = 'CZSd5fKXN7E2s1vn0jwGJbma5Mbd9re8';
             $data['key'] = 'YWB6U31E4G';
             $data['url'] = route('getbook', ['id' => $order->book_id]);
