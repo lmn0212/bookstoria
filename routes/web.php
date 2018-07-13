@@ -33,7 +33,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/library/delete/{id}', 'LibraryController@delete')->name('libdel');
     //Orders
     Route::get('/order/create/{id}', 'OrderController@createOrder')->name('create_order');
-    Route::post('/order/accept/platon','OrderController@acceptOrder');
     //Blogs
     Route::get('/myblogs', 'BlogsController@myBlogs');
     Route::get('/blog/add', 'BlogsController@addBlog');
@@ -85,6 +84,9 @@ Route::post('/commentblog/add', 'BlogsController@addComment');
 Route::get('/competition/all', 'CompetitionController@getAll');
 Route::get('/competition/{id}', 'CompetitionController@getComp');
 Route::post('/competition/createorder', 'CompetitionController@createOrder');
+
+//Order
+Route::post('/order/accept/platon','OrderController@acceptOrder');
 
 
 // Log view
