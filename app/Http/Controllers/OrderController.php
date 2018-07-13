@@ -84,8 +84,6 @@ class OrderController extends Controller
 
     public function acceptOrder(Request $request)
     {
-
-        return response()->json(['success' => true], 200);
 //        $sess = $request->session()->get('order_id');
 //        $user = User::find(Auth::user()->id);
 //        $sess = $user->order_id;
@@ -136,7 +134,7 @@ class OrderController extends Controller
         $user->order_id = null; // сбрасываем номер заказа
         $user->save();
 
-        return response('ok', 200);
+        return response()->json(['success' => true], 200);
 
     }
 }
