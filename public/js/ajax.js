@@ -20,7 +20,7 @@ $(document).ready(function() {
                 console.log(data);
                 if(data.status){
                     modal.find('#myModalLabel').text(data.order.description);
-                    modal.find('.payment_btn').find('span').text('(' + data.order.summ + ' руб.)');
+                    modal.find('.payment_btn').find('span').text('(' + data.data.ext1 + ')');
 
                     modal.find("input[name='payment']").val(data.data.payment);
                     modal.find("input[name='key']").val(data.data.key);

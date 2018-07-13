@@ -38,15 +38,17 @@ class OrderController extends Controller
             $order->save();
 
             // Формируем данные для отправки на Платон
+            $summ_proc = ($order->summ/100)*env('PROC_PLATON')+$order->summ;
+            $summ = number_format(($summ_proc)/env('KURS_PLATON'), 2, '.', '');
             $pass = 'CZSd5fKXN7E2s1vn0jwGJbma5Mbd9re8';
             $data['key'] = 'YWB6U31E4G';
             $data['url'] = route('getbook', ['id' => $order->book_id]);
             $data['data'] = base64_encode(json_encode([
-                'amount'        => number_format($order->summ/env('KURS_PLATON'), 2, '.', ''),
+                'amount'        => $summ,
                 'description'   => $order->description,
                 'currency'      => 'UAH'
             ]));
-            $data['ext1'] = $order->summ.' руб.';
+            $data['ext1'] = $summ_proc.' руб.';
             $data['ext2'] = $order->id;
             $data['payment'] = 'CC';
             $data['sign'] = md5(strtoupper(strrev($data['key']).strrev($data['payment']).strrev($data['data']).strrev($data['url']).strrev($pass)));

@@ -80,7 +80,7 @@
 
 <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/wow.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/ajax.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/ajax.js?v=1.1')}}"></script>
 
 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'readbook' || \Illuminate\Support\Facades\Route::current()->getName() === 'readchapter')
 	<script type="text/javascript" src="{{asset('js/readpag.js?v=1.1')}}"></script>
@@ -161,6 +161,7 @@
                                 <input type="hidden" name="ext2" value=""/>
                                 <p>
                                     <button type="submit" class="btn btn-primary payment_btn" id="platon_btn">Platon <span></span></button>
+                                    <span>+ {{env('PROC_PLATON')}}% комиссия</span>
                                 </p>
                             </form>
                             {{--<form action="">
