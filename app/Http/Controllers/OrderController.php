@@ -123,8 +123,8 @@ class OrderController extends Controller
         $order->payment_id = $request->order;
         $order->result = 'success';
         $order->paytype = 'card';
-        $order->liqpay_order_id = $request->id;
-        $order->description = $request->decription;
+//        $order->liqpay_order_id = $request->id;
+//        $order->description = $request->decription;
         $order->ip = $request->ip;
         $order->summ = $request->amount;
         $order->currency = $request->currency;
