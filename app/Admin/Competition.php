@@ -25,8 +25,8 @@ AdminSection::registerModel(\App\Competition::class, function (ModelConfiguratio
         return AdminForm::panel()->addBody([
             AdminFormElement::image('cover', 'Фото конкурса')->required(),
             AdminFormElement::text('name', 'Название конкурса')->required(),
-            AdminFormElement::wysiwyg('description', 'Описание конкурса')->required(),
-            AdminFormElement::textarea('rules', 'Правила конкурса')->required(),
+            AdminFormElement::textarea('description', 'Описание конкурса')->required(),
+            AdminFormElement::wysiwyg('rules', 'Правила конкурса')->required(),
             AdminFormElement::checkbox('status', 'Статус')->setDefaultValue('checked'),
         ]);
     });
