@@ -530,7 +530,7 @@ a:hover {
 }
 /***MEDIA***/
 @media only screen and (max-width: 760px) {
-	.left-sidebar { display: none; }
+	/*.left-sidebar { display: none; }*/
 	#carouselExampleFade {
 		display: none;
 	}
