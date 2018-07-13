@@ -29,7 +29,7 @@ class OrderController extends Controller
 
             $order = Order::firstOrNew(['book_id' => $id, 'user_id' => Auth::user()->id, 'result' => 'create']);
             $order->user_id = Auth::user()->id;
-            $order->author_id = $book->author()->id;
+            $order->author_id = $book->author_id;
             $order->book_id = $id;
             $order->summ = number_format($book->price, 2, '.', '');
             $order->ip = $request->ip();
