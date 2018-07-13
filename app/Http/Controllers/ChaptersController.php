@@ -119,7 +119,6 @@ class ChaptersController extends Controller
            }
            $chapter = Chapter::where('book_id',$b->id)->first();
 
-           $out = array();
            if(isset($chapter) && !empty($chapter)){
                /*if(strripos($chapter->text, '<div>') || strripos($chapter->text, '<p>')){
                    $out = explode("\n", $chapter->text);
@@ -152,7 +151,6 @@ class ChaptersController extends Controller
                    'cols'=>$cols,
                    'cats'=>$cats,
                    'chapter'=>$chapters,
-                   'chap'=>[0 =>'Глава не найдена'],
                    'foot'=> $foot,
                ]);
            }

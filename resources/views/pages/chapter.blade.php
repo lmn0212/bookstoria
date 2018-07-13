@@ -36,16 +36,11 @@
 
                     <div id="content" class="contents">
                             @if(isset($chap))
-
-                                    {!!  $chap  !!}
-
-                            @elseif(isset($html) && isset($out))
+                                {!!  $chap  !!}
+                            @else
                                <div class="col-md-12">
-                                   {{$out}}
+                                   <p>Глава не найдена</p>
                                </div>
-                            <div class="col-md-12">
-                                {!!  $html !!}
-                            </div>
                             @endif
                     </div>
 
