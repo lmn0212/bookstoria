@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="modal-body">
-                                {{$c->rules}}
+                                {!! $c->rules !!}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Назад</button>
