@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="modal-body">
-                               {!! $com->rules !!}
+                               {{$com->rules}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Назад</button>
