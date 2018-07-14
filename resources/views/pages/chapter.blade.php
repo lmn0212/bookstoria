@@ -39,7 +39,7 @@
                                 {!!  $chap  !!}
                             @else
                                <div class="col-md-12">
-                                   @if(isset($chap))
+                                   @if(isset($out))
                                        <p>Глава не найдена</p>
                                    @else
                                        {{$out}} {!! $html !!}
