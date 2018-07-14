@@ -27,7 +27,7 @@ class ChaptersController extends Controller
                     $chapters = $b->chapters($chapter)->get();
                     $chapter = Chapter::find($chapter);
                     $paybook = Order::where('book_id', $book)->where('result', 'success')->first();
-                    if($chapter->number < $b->chapter_count || $paybook)
+                    if($chapter->number < $b->chapter_count || isset($paybook) && !empty($paybook))
                     {
                         $out =  strip_tags($chapter->text,'<p><a><br>');
                         return view('pages.chapter',[
@@ -49,18 +49,7 @@ class ChaptersController extends Controller
                             $cats = Category::all();
                             $cols = Collection::all();
                             if(isset($order) && isset($book) && !empty($book)){
-                                session()->put('order_id', $order->id);
-                                $liqpay = new LiqPay(env('LIQPAY_PUBLIC_KEY'),env('LIQPAY_PRIVATE_KEY'));
-                                //dd($liqpay);
-                                $html = $liqpay->cnb_form(array(
-                                    'action'         => 'pay',
-                                    'amount'         => $book->price,
-                                    'currency'       => 'RUB',
-                                    'description'    => 'Покупка книги '. $book->name,
-                                    'order_id'       => $order->id,
-                                    'version'        => '3',
-                                    //'sandbox'        => '1',
-                                ));
+                                $html = '<br><a href="'.route('create_order', ['id' => $b->id]).'" class="btn book-btn btn-success" id="order_create" book-id="'.$b->id.'">Купить за '.$b->price.' ₽</a>';
                                 $out = "Доступ к данной главе только после покупки книги";
                                 return view('pages.chapter',[
                                     'page'=>$b,
