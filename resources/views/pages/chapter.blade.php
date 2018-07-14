@@ -40,9 +40,9 @@
                             @else
                                <div class="col-md-12">
                                    @if(isset($out))
-                                       <p>Глава не найдена</p>
-                                   @else
                                        {{$out}} {!! $html !!}
+                                   @else
+                                       <p>Глава не найдена</p>
                                    @endif
                                </div>
                             @endif

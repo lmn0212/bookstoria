@@ -14,7 +14,7 @@ use LiqPay;
 
 class ChaptersController extends Controller
 {
-   public function readChapter($book,$chapter)
+   public function readChapter($book, $chapter)
    {
        if(isset($book) && !empty($book) && isset($chapter) && !empty($chapter))
        {
