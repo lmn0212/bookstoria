@@ -88,6 +88,12 @@ Route::post('/competition/createorder', 'CompetitionController@createOrder');
 //Order
 Route::post('/order/accept/platon','OrderController@acceptOrder');
 
+// API
+Route::prefix('api')->group(function () {
+    Route::get('/getChapters/{id}', 'Api\ApiController@getChapters');
+    Route::get('/getChapter/{id}', 'Api\ApiController@getChapter');
+});
+
 
 // Log view
 Route::get('l_v_', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

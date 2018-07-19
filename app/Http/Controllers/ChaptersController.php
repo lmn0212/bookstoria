@@ -30,6 +30,7 @@ class ChaptersController extends Controller
                     if($chapter->number < $b->chapter_count || isset($paybook) && !empty($paybook))
                     {
                         $out =  strip_tags($chapter->text,'<p><a><br>');
+                        dd($out);
                         return view('pages.chapter',[
                             'page'=>$b,
                             'cols'=>$cols,
