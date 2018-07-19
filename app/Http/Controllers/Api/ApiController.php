@@ -11,12 +11,14 @@ class ApiController extends Controller
 {
     public function getChapters(Request $request, $id)
     {
-//        $b = Book::find($id);
+        $b = Book::find($id);
         $chapters = Chapter::select('id', 'name', 'number', 'public')->where('book_id', $id)->get();
-        if ($chapters){
+        if ($chapters && $b){
             return response()->json([
                 'success' => true,
                 'count' => count($chapters),
+                'bookname' => $b->name,
+                'author' => $b->author_name,
                 'data' => $chapters
             ], 200);
         }
