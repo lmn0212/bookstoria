@@ -20,12 +20,12 @@ class ApiController extends Controller
                 'bookname' => $b->name,
                 'author' => $b->author_name,
                 'data' => $chapters
-            ], 200);
+            ], 200)->header('Access-Control-Allow-Origin', '*');
         }
         return response()->json([
             'success' => false,
             'description' => 'not found book id '.$id
-        ], 200);
+        ], 200)->header('Access-Control-Allow-Origin', '*');
     }
     public function getChapter(Request $request, $id)
     {
@@ -34,11 +34,11 @@ class ApiController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => $chapter
-            ], 200);
+            ], 200)->header('Access-Control-Allow-Origin', '*');
         }
         return response()->json([
             'success' => false,
             'description' => 'not found chapter id '.$id
-        ], 200);
+        ], 200)->header('Access-Control-Allow-Origin', '*');
     }
 }
