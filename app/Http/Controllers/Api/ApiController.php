@@ -31,14 +31,56 @@ class ApiController extends Controller
     {
         $chapter = Chapter::find($id);
         if ($chapter){
+            $text = $this->chapterReader($chapter->text);
             return response()->json([
                 'success' => true,
-                'data' => $chapter
+                'data' => [
+                    'id' => $chapter->id,
+                    'name' => $chapter->name,
+                    'number' => $chapter->number,
+                    'book_id' => $chapter->book_id,
+                    'author_id' => $chapter->author_id,
+                    'public' => $chapter->public,
+                    'text' => $text,
+                ]
             ], 200)->header('Access-Control-Allow-Origin', '*');
         }
         return response()->json([
             'success' => false,
             'description' => 'not found chapter id '.$id
         ], 200)->header('Access-Control-Allow-Origin', '*');
+    }
+
+    function chapterReader($text, $limitChars = 5000)
+    {
+        $textSize = mb_strlen($text);
+        $pageCount = ceil($textSize / $limitChars);
+        $averagePageSize = ceil($textSize / $pageCount);
+
+        $pages = [];
+
+        for ($i = 0; $i < $pageCount; $i++)
+        {
+            $currentPage = mb_substr($text, $averagePageSize * $i, $averagePageSize);
+            $pages[] = $currentPage;
+        }
+
+        for ($i = 1; $i < $pageCount; $i++)
+        {
+            $currentPage = $pages[$i - 1];
+            $nextPage = $pages[$i];
+
+            if (mb_substr($currentPage, -4, 4) !== '</p>')
+            {
+                $tagPosition = mb_strpos($nextPage, '</p>') + 4;
+                $currentPage .= mb_substr($nextPage, 0, $tagPosition);
+                $nextPage = trim(mb_substr($nextPage, $tagPosition));
+            }
+
+            $pages[$i - 1] = $currentPage;
+            $pages[$i] = $nextPage;
+        }
+
+        return $pages;
     }
 }
