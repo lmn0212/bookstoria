@@ -501,6 +501,7 @@ a:hover {
 	right: 10px; 
 	font-size: 40px; 
 	color: #00000070;
+	z-index: 90;
 }
 .uparrow:hover {
 	color: black !important;
