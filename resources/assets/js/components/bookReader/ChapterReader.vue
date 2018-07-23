@@ -155,5 +155,11 @@ export default {
     .example h2{
         margin-top: 50px;
     }
+    /***MEDIA***/
+    @media (max-width: 640px) {
+        .pagination .page-item a{
+            margin: 0 1px;
+        }
+    }
 </style>
 
