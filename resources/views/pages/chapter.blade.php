@@ -13,8 +13,8 @@
                 <h5>Главы</h5>
 
                 <ul class="list-group list-group-flush">
-                    @if(count($chapter))
-                        @foreach($chapter as $cat)
+                    @if(count($chapters))
+                        @foreach($chapters as $cat)
                             <a class="list-group-item side-item" href="/chapter/read/{{$page->id}}/{{$cat->id}}">{{$cat->name}}</a>
                         @endforeach
                     @endif
@@ -22,11 +22,7 @@
 
             </div>
 
-
-
             <div class="col-12 col-md-8 col-lg-9 content">
-
-
 
                 <div class="example">
 
@@ -35,38 +31,11 @@
                     <h4>{{$page->author_name}}</h4>
 
                     <div id="content" class="contents">
-                            @if(isset($chap))
-                                {!!  $chap  !!}
-                            @else
-                               <div class="col-md-12">
-                                   @if(isset($out))
-                                       {{$out}} {!! $html !!}
-                                   @else
-                                       <p>Глава не найдена</p>
-                                   @endif
-                               </div>
-                            @endif
+                        <div id="app">
+                            <!-- Вызов компонента -->
+                            <chapter-reader :id="{{$chapter->id}}"></chapter-reader>
+                        </div>
                     </div>
-
-                    <hr />
-                    <div class="row justify-content-center">
-                    <nav id="pagination1" class="pagination1" aria-label="Page navigation example">
-
-                        <br />
-
-                        <div id="page_number" class="page_number">1</div>
-
-                    </nav>
-                    </div>
-<!--                     <div id="pagination1" aria-label="Page navigation example">
-                      <ul class="pagination pagination-lg">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                    </div> -->
 
                 </div>
 

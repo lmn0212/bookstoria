@@ -30,12 +30,13 @@ class ChaptersController extends Controller
                     if($chapter->number < $b->chapter_count || isset($paybook) && !empty($paybook))
                     {
                         $out =  strip_tags($chapter->text,'<p><a><br>');
-                        dd($out);
+
                         return view('pages.chapter',[
                             'page'=>$b,
                             'cols'=>$cols,
                             'cats'=>$cats,
-                            'chapter'=>$chapters,
+                            'chapter'=>$chapter,
+                            'chapters'=>$chapters,
                             'chap'=>$out,
                             'foot'=>$foot
                         ]);
@@ -56,7 +57,8 @@ class ChaptersController extends Controller
                                     'page'=>$b,
                                     'cols'=>$cols,
                                     'cats'=>$cats,
-                                    'chapter'=>$chapters,
+                                    'chapter'=>$chapter,
+                                    'chapters'=>$chapters,
                                     'out'=>$out,
                                     'html'=>$html,
                                     'foot'=>$foot,
@@ -69,7 +71,8 @@ class ChaptersController extends Controller
                                 'page'=>$b,
                                 'cols'=>$cols,
                                 'cats'=>$cats,
-                                'chapter'=>$chapters,
+                                'chapter'=>$chapter,
+                                'chapters'=>$chapters,
                                 'out'=>$out,
                                 'html'=>$html,
                                 'foot'=>$foot
@@ -85,7 +88,8 @@ class ChaptersController extends Controller
                         'page'=>$b,
                         'cols'=>$cols,
                         'cats'=>$cats,
-                        'chapter'=>$chapters,
+                        'chapter'=>$chapter,
+                        'chapters'=>$chapters,
                         'chap'=>$out,
                         'foot'=>$foot
                     ]);
@@ -110,16 +114,7 @@ class ChaptersController extends Controller
            $chapter = Chapter::where('book_id',$b->id)->first();
 
            if(isset($chapter) && !empty($chapter)){
-               /*if(strripos($chapter->text, '<div>') || strripos($chapter->text, '<p>')){
-                   $out = explode("\n", $chapter->text);
-               }else{
-                   $chap =  preg_split("/[.?!] /", $chapter->text);
-                   foreach($chap as $c)
-                   {
 
-                       $out[] = '<p>'.$c.'</p>'.chr(10);
-                   }
-               }*/
                $out =  strip_tags($chapter->text,'<p><a><br>');
                if(isset($b) && !empty($b))
                {
@@ -127,7 +122,8 @@ class ChaptersController extends Controller
                        'page'=>$b,
                        'cols'=>$cols,
                        'cats'=>$cats,
-                       'chapter'=>$chapters,
+                       'chapter'=>$chapter,
+                       'chapters'=>$chapters,
                        'chap'=>$out,
                        'foot'=>$foot
                    ]);
@@ -140,7 +136,8 @@ class ChaptersController extends Controller
                    'page'=>$b,
                    'cols'=>$cols,
                    'cats'=>$cats,
-                   'chapter'=>$chapters,
+                   'chapter'=>$chapter,
+                   'chapters'=>$chapters,
                    'foot'=> $foot,
                ]);
            }

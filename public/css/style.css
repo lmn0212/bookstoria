@@ -438,23 +438,6 @@ a:hover {
 	-webkit-border-radius: 3px;
 }
 
-.example #content {
-	position:relative;
-	height:1000px;
-	padding:20px;
-}
-.example #content p{
-	line-height:1;
-}
-.example #content .page {
-	position:absolute;
-	top:0px;
-	padding-bottom:20px;
-}
-
-
-
-
 .example .pagination a.prevnext{
 	font-weight: bold;
 }
@@ -511,12 +494,6 @@ a:hover {
     white-space: normal;
     background-color: transparent;
     border: 0;
-}
-.example #content {
-    position: relative;
-    height: 1150px;
-    padding: 20px;
-    overflow-y: hidden;
 }
 .uparrow {
 	position: fixed; 

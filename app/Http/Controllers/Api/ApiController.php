@@ -32,6 +32,7 @@ class ApiController extends Controller
         $chapter = Chapter::find($id);
         if ($chapter){
             $text = $this->chapterReader($chapter->text);
+            $text = str_replace(["\r\n","\n","\x0A\x0D","\x0D\x0A","\x0A","\x0D"], "<br>", $text);
             return response()->json([
                 'success' => true,
                 'data' => [

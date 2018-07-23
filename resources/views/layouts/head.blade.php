@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+    <title>Bookstorya.com | @if(isset($title) && !empty($title)) {{$title}} @else Читайте с нами! @endif</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120375146-2"></script>
     <script>
@@ -39,7 +41,6 @@
         <script src="{{asset('packages/sleepingowl/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8"></script>
     @endif
 
-    <title>Bookstorya.com | @if(isset($title) && !empty($title)) {{$title}} @else Читайте с нами! @endif</title>
     <style type="text/css">
         html, body {
             margin: 0;
@@ -90,5 +91,8 @@
     </style>
     <script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?156",t.onload=function(){VK.Retargeting.Init("VK-RTRG-257112-dvjXT"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-257112-dvjXT" style="position:fixed; left:-999px;" alt=""/></noscript>
 
-    <script type="text/javascript" src="{{asset('js/pagination.js?v=1.1')}}"></script>
+    {{--<script type="text/javascript" src="{{asset('js/pagination.js?v=1.1')}}"></script>--}}
+
+    <!-- Styles -->
+    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>

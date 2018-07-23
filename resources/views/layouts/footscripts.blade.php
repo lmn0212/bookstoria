@@ -1,3 +1,7 @@
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+
 <!-- Optional JavaScript -->
 <script type="text/javascript">
     $(document).on('ready', function() {
@@ -82,13 +86,13 @@
 <script type="text/javascript" src="{{asset('js/wow.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/ajax.js?v=1.1')}}"></script>
 
-@if(\Illuminate\Support\Facades\Route::current()->getName() === 'readbook' || \Illuminate\Support\Facades\Route::current()->getName() === 'readchapter')
-	<script type="text/javascript" src="{{asset('js/readpag.js?v=1.1')}}"></script>
+@if(Route::current()->getName() === 'readbook' || Route::current()->getName() === 'readchapter')
+	{{--<script type="text/javascript" src="{{asset('js/readpag.js?v=1.1')}}"></script>
 	<script>
         jQuery(window).load(function() {
             $('#content').MyPagination({height: 800, fadeSpeed: 400});
         });
-	</script>
+	</script>--}}
 @endif
 
 
