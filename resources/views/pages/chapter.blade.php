@@ -39,10 +39,20 @@
                     <h4>{{$page->author_name}}</h4>
 
                     <div id="content" class="contents">
-                        <div id="app">
-                            <!-- Вызов компонента -->
-                            <chapter-reader :id="{{$chapter->id}}"></chapter-reader>
-                        </div>
+                        @if(isset($chap))
+                            <div id="app">
+                                <!-- Вызов компонента -->
+                                <chapter-reader :id="{{$chapter->id}}"></chapter-reader>
+                            </div>
+                        @else
+                            <div class="col-md-12">
+                                @if(isset($out))
+                                    {{$out}} {!! $html !!}
+                                @else
+                                    <p>Глава не найдена</p>
+                                @endif
+                            </div>
+                        @endif
                     </div>
 
                 </div>
