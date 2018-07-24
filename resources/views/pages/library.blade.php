@@ -14,7 +14,9 @@
                     </div>
                     <div class="col-10">
                         <div class="row">
+                            @if(count($lib))
                              @foreach($lib as $l)
+                                 @if($l->book)
                                      <div class="col-md-4">
                                          <div class="col-md-12">
                                              <a href="/book/{{$l->book->id}}">
@@ -28,7 +30,9 @@
                                              <a class="btn btn-danger" href="/library/delete/{{$l->book->id}}">Удалить из библиотеки</a>
                                          </div>
                                      </div>
+                                 @endif
                              @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
