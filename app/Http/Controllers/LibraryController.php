@@ -46,6 +46,7 @@ class LibraryController extends Controller
             $cols = Collection::all();
             $foot = FooterMenu::all();
             $lib = Library::where('user_id',$user->id)->get();
+            dd($lib);
             if(isset($lib) && !empty($lib))
             {
                 return view('pages.library',[
