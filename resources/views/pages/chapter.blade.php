@@ -11,8 +11,7 @@
             <div class="col-12 col-md-4 col-lg-3 left-sidebar wow fadeInLeft">
 
                 <h5>Главы</h5>
-
-                    @if(count($chapters) < 7)
+                    @if(count($chapters) < 2)
                     <ul class="list-group list-group-flush">
                         @foreach($chapters as $cat)
                             <a class="list-group-item side-item" href="/chapter/read/{{$page->id}}/{{$cat->id}}">{{$cat->name}}</a>
@@ -21,7 +20,7 @@
                     @else
                     <select id="select_glav" class="form-control">
                         @foreach($chapters as $cat)
-                            <option link-url="/chapter/read/{{$page->id}}/{{$cat->id}}">
+                            <option link-url="/chapter/read/{{$page->id}}/{{$cat->id}}" {{(Request::url() == env('APP_URL').'/chapter/read/'.$page->id.'/'.$cat->id)?'selected':''}}>
                                 {{$cat->name}}
                             </option>
                         @endforeach
