@@ -12,13 +12,21 @@
 
                 <h5>Главы</h5>
 
-                <ul class="list-group list-group-flush">
-                    @if(count($chapters))
+                    @if(count($chapters) < 7)
+                    <ul class="list-group list-group-flush">
                         @foreach($chapters as $cat)
                             <a class="list-group-item side-item" href="/chapter/read/{{$page->id}}/{{$cat->id}}">{{$cat->name}}</a>
                         @endforeach
+                    </ul>
+                    @else
+                    <select id="select_glav" class="form-control">
+                        @foreach($chapters as $cat)
+                            <option link-url="/chapter/read/{{$page->id}}/{{$cat->id}}">
+                                {{$cat->name}}
+                            </option>
+                        @endforeach
+                    </select>
                     @endif
-                </ul>
 
             </div>
 

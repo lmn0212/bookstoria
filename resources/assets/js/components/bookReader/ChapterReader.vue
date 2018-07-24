@@ -4,10 +4,12 @@
             <div class="pagination">
                 <ul class="pagination pagination-lg pagination_top">
                     <li class="page-item"><a href="#" v-if="hasPrev" @click.prevent="prevPage()">Назад</a></li>
+                    <li class="page-item"><a href="#" v-if="hasPrevLong" @click.prevent="getPage(currentPage - listPage)"><<</a></li>
                     <li class="page-item"><a href="#" v-if="hasFirst" @click.prevent="getPage(1)">1</a></li>
                     <li class="page-item"><span v-if="hasFirst">...</span></li>
                     <li class="page-item"><a href="#" v-for="button in buttons" @click.prevent="getPage(button)" :class="{current: currentPage == button}">{{ button }}</a></li>
                     <li class="page-item"><span v-if="hasLast">...</span></li>
+                    <li class="page-item"><a href="#" v-if="hasNextLong" @click.prevent="getPage(currentPage + listPage)">>></a></li>
                     <li class="page-item"><a href="#" v-if="hasNext" @click.prevent="nextPage()">Вперёд</a></li>
                 </ul>
             </div>
@@ -15,10 +17,12 @@
             <div class="pagination">
                 <ul class="pagination pagination-lg pagination_bot">
                     <li class="page-item"><a href="#" v-if="hasPrev" @click.prevent="prevPage()">Назад</a></li>
+                    <li class="page-item"><a href="#" v-if="hasPrevLong" @click.prevent="getPage(currentPage - listPage)"><<</a></li>
                     <li class="page-item"><a href="#" v-if="hasFirst" @click.prevent="getPage(1)">1</a></li>
                     <li class="page-item"><span v-if="hasFirst">...</span></li>
                     <li class="page-item"><a href="#" v-for="button in buttons" @click.prevent="getPage(button)" :class="{current: currentPage == button}">{{ button }}</a></li>
                     <li class="page-item"><span v-if="hasLast">...</span></li>
+                    <li class="page-item"><a href="#" v-if="hasNextLong" @click.prevent="getPage(currentPage + listPage)">>></a></li>
                     <li class="page-item"><a href="#" v-if="hasNext" @click.prevent="nextPage()">Вперёд</a></li>
                 </ul>
             </div>
@@ -43,7 +47,8 @@ export default {
     data () {
         return {
             pages: [],
-            currentPage: 1
+            currentPage: 1,
+            listPage: 5
         }
     },
     computed: {
@@ -75,9 +80,15 @@ export default {
         hasNext () {
             return this.currentPage < this.count
         },
+        hasNextLong () {
+            return this.currentPage + this.listPage < this.count
+        },
+        hasPrevLong () {
+            return this.currentPage - this.listPage > 1
+        },
         // массив кнопок в пагинации
         buttons () {
-            let buttons = []
+            let buttons = [];
             for (let i = this.rangeStart; i <= this.rangeEnd; i ++) {
                 buttons.push(i)
             }

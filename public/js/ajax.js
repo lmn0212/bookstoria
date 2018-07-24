@@ -90,4 +90,11 @@ $(document).ready(function() {
         });
     });
 
+    $('#select_glav').on('change', function () {
+        let selected = $(this).find('option:selected');
+        if (selected.attr('link-url') !== null){
+            location.href = selected.attr('link-url');
+        }
+    })
+
 });
