@@ -62,6 +62,9 @@ Route::get('/category/{id}', 'BooksController@getCat')->name('getcat');
 //collection
 Route::get('/collections/{id}', 'BooksController@getCol')->name('getcol');
 
+//Author books
+Route::get('/author_books/{id}', 'BooksController@getAuthorBooks')->name('author_books');
+
 //search
 Route::get('/search', 'BooksController@search')->name('search');
 

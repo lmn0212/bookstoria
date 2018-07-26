@@ -11,4 +11,10 @@
     <a class="list-group-item side-item" href="/mypurchases">Мои покупки</a>
     <a class="list-group-item side-item" href="/myfinance">Мои финансы</a>
 
-</ul>
+    @if (auth()->check())
+        @if (auth()->user()->isAdmin())
+            <a class="list-group-item side-item" href="/admin">Админ панель</a>
+        @endif
+    @endif
+
+ </ul>

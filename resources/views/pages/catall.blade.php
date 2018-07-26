@@ -27,7 +27,14 @@
 
                                 <div class="col-12 col-md-9">
                                     <a href="/book/{{$c->id}}"><h4 class="book-title">{{$c->name}}</h4></a>
-                                    <h6 class="book-title">{{$c->author_name}}</h6>
+
+                                    @if($c->author_id)
+                                    <a href="{{route('author_books', ['id'=>$c->author_id])}}">
+                                        <h6 class="book-title">{{$c->author_name}}</h6>
+                                    </a>
+                                    @else
+                                        <h6 class="book-title">{{$c->author_name}}</h6>
+                                    @endif
                                     <p>{!! str_limit($c->annotation,300) !!} <a href="/book/{{$c->id}}" class="read-more">Подробнее</a>
                                     </p>
                                     <p class="book-tags"><strong>Жанры:</strong>

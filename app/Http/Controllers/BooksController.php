@@ -9,6 +9,7 @@ use App\Collection;
 
 use App\FooterMenu;
 use App\NotificationChapter;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
@@ -241,6 +242,7 @@ class BooksController extends Controller
    {
        $cats = Category::all();
        $books = Book::paginate(20);
+       if ($books) $books->load('author');
        $cols = Collection::all();
        $foot = FooterMenu::all();
        if(isset($books) && !empty($books))
@@ -277,6 +279,29 @@ class BooksController extends Controller
 
        return abort(404);
    }
+
+    public function getAuthorBooks($id){
+        if(isset($id) && !empty($id))
+        {
+            $user = User::find($id);
+            $cats = Category::all();
+            $books = Book::where('author_id', $id)->paginate(20);
+            $cols = Collection::all();
+            $foot = FooterMenu::all();
+            if(isset($books) && !empty($books))
+            {
+                return view('pages.author_books',[
+                    'cats'=>$cats,
+                    'user'=>$user,
+                    'books'=>$books,
+                    'cols'=>$cols,
+                    'foot'=> $foot,
+                ]);
+            }
+        }
+
+        return abort(404);
+    }
 
    public function search(Request $request)
    {

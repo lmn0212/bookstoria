@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->BelongsToMany('App\Role','role_user');
     }
 
+    public function isAdmin()
+    {
+        return in_array(1, $this->roles()->pluck('role_id')->all());
+    }
+
     public function books()
     {
         return $this->HasMany('App\Book','author_id');
@@ -64,4 +69,6 @@ class User extends Authenticatable
     {
         return $this->HasMany('App\Blog');
     }
+
+
 }
