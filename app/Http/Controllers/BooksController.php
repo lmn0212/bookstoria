@@ -45,7 +45,9 @@ class BooksController extends Controller
                    $book->public = $request->public;
 
                    $author = Author::where('user_id', $user->id)->first();
-                   $book->author_id = $author->id;
+                   if ($author){
+                       $book->author_id = $author->id;
+                   }
 
                    $book->save();
                    //$b = Book::find($book->id);
@@ -104,7 +106,9 @@ class BooksController extends Controller
                             $book->public = $request->public;
 
                             $author = Author::where('user_id', $user->id)->first();
-                            $book->author_id = $author->id;
+                            if ($author){
+                                $book->author_id = $author->id;
+                            }
 
                             $book->tags = $request->tags;
                             $book->save();
