@@ -180,8 +180,6 @@ class BooksController extends Controller
                $author = Author::where('user_id', $user->id)->first();
                if ($author){
                    $books = Book::where('author_id', $author->id)->paginate(20);
-               }else{
-                   $books = '';
                }
 
                 if(isset($books) && !empty($books))
@@ -193,6 +191,12 @@ class BooksController extends Controller
                         'foot'=> $foot
                     ]);
                 }
+               return view('pages.mybooks',[
+                   'cats'=>$cats,
+                   'cols'=>$cols,
+                   'books'=>null,
+                   'foot'=> $foot
+               ]);
            }
        }
    }
