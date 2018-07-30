@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Book;
 use App\Category;
 use App\Chapter;
@@ -42,7 +43,10 @@ class BooksController extends Controller
                    $book->chapter_count = $request->chaptercount;
                    $book->price = $request->price;
                    $book->public = $request->public;
-                   $book->author_id = $user->id;
+
+                   $author = Author::where('user_id', $user->id)->first();
+                   $book->author_id = $author->id;
+
                    $book->save();
                    //$b = Book::find($book->id);
                    foreach ($request->cats as $cat)
@@ -98,7 +102,10 @@ class BooksController extends Controller
                             $book->chapter_count = $request->chaptercount;
                             $book->price = $request->price;
                             $book->public = $request->public;
-                            $book->author_id = $user->id;
+
+                            $author = Author::where('user_id', $user->id)->first();
+                            $book->author_id = $author->id;
+
                             $book->tags = $request->tags;
                             $book->save();
                             //$b = Book::find($book->id);
@@ -170,7 +177,8 @@ class BooksController extends Controller
            $cols = Collection::all();
            $foot = FooterMenu::all();
            if($role->name == 'author' || $role->name == 'admin'){
-                $books = Book::where('author_id',$user->id)->paginate(20);
+               $author = Author::where('user_id', $user->id)->first();
+                $books = Book::where('author_id', $author->id)->paginate(20);
 
                 if(isset($books) && !empty($books))
                 {
@@ -283,7 +291,7 @@ class BooksController extends Controller
     public function getAuthorBooks($id){
         if(isset($id) && !empty($id))
         {
-            $user = User::find($id);
+            $user = Author::find($id);
             $cats = Category::all();
             $books = Book::where('author_id', $id)->paginate(20);
             $cols = Collection::all();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Author;
 use App\Category;
 use App\Collection;
 use App\FooterMenu;
@@ -75,6 +76,10 @@ class RegisterController extends Controller
         RoleUser::create([
             'user_id' => $user->id,
             'role_id' => 3
+        ]);
+        Author::create([
+            'user_id' => $user->id,
+            'name' => $user->name,
         ]);
         return $user;
     }
