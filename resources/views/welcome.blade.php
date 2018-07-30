@@ -3,7 +3,6 @@
 @section('content')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-
         @if(count($banners) > 0)
             @foreach($banners as $banner)
                 @if($banner->public == '1')
