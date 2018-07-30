@@ -178,7 +178,11 @@ class BooksController extends Controller
            $foot = FooterMenu::all();
            if($role->name == 'author' || $role->name == 'admin'){
                $author = Author::where('user_id', $user->id)->first();
-                $books = Book::where('author_id', $author->id)->paginate(20);
+               if (isset($author) && !empty($author)){
+                   $books = Book::where('author_id', $author->id)->paginate(20);
+               }else{
+                   $books = false;
+               }
 
                 if(isset($books) && !empty($books))
                 {
