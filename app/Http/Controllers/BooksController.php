@@ -181,7 +181,7 @@ class BooksController extends Controller
                if (isset($author) && !empty($author)){
                    $books = Book::where('author_id', $author->id)->paginate(20);
                }else{
-                   $books = false;
+                   $books = null;
                }
 
                 if(isset($books) && !empty($books))
