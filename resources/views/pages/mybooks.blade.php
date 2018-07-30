@@ -14,7 +14,7 @@
                 {{--<div class="col-md-12 cat-title">--}}
                     {{--<a href="/home" class="btn btn-primary">Добавить книгу</a>--}}
                 {{--</div>--}}
-                @if(count($books) > 0)
+                @if($books && count($books) > 0)
                     @foreach($books as $book)
                         <div class="row wow fadeInUp justify-content-center">
                             <div class="col-5 col-md-3 catalog-item-col">
