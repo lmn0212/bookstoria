@@ -46,10 +46,10 @@
                                 <div class="col-md-4"><a class="btn btn-danger" href="/book/delete/{{$book->id}}">Удалить</a></div>
                             </div>
                         </div>
-                        <ul class="pagination justify-content-end  wow fadeInUp ">
-                            {{ $books->links()}}
-                        </ul>
                     @endforeach
+                    <ul class="pagination justify-content-end  wow fadeInUp ">
+                        {{ $books->links()}}
+                    </ul>
                 @else
                     <div class="row">
                         <div class="col-12">
