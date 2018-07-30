@@ -41,6 +41,15 @@ return [
         ]
     ],
     [
+        'title' => 'Авторы',
+        'icon'  => 'fa fa-user',
+        'pages' => [
+            (new Page(\App\Author::class))
+                ->setPriority(100)
+                ->setIcon('fa fa-user'),
+        ]
+    ],
+    [
         'title' => 'Таксономия',
         'icon'  => 'fa fa-tag',
         'pages' => [

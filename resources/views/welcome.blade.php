@@ -65,6 +65,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -84,6 +91,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -103,6 +117,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -122,6 +143,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -141,6 +169,13 @@
                                     <img src="{{$book->cover}}" width="100%" height="auto">
                                     <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                                 </a>
+                                @if($book->author_id)
+                                    <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                        <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                    </a>
+                                @else
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                @endif
                             </div>
                         </div>
                     @endforeach
