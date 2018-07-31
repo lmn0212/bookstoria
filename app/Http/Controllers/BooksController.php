@@ -106,10 +106,11 @@ class BooksController extends Controller
                             $book->price = $request->price;
                             $book->public = $request->public;
 
-                            $author = Author::where('user_id', $user->id)->first();
-                            if ($author){
-                                $book->author_id = $author->id;
-                            }
+                            $book->author_id = Auth::user()->id;
+//                            $author = Author::where('user_id', $user->id)->first();
+//                            if ($author){
+//                                $book->author_id = $author->id;
+//                            }
 
                             $book->tags = $request->tags;
                             $book->save();
@@ -195,14 +196,11 @@ class BooksController extends Controller
 
     public function deleteChapter($id)
     {
-        Log::info('DATA deleteChapter TEST!!!');
         if(isset($id) && !empty($id))
         {
             if(Auth::check()){
                 $chapter  = Chapter::find($id);
                 if(isset($chapter) && !empty($chapter) && $chapter->author_id == Auth::user()->id){
-                    Log::info('DATA deleteChapter: '. $chapter);
-
                     $chapter->delete();
                     return redirect('mybooks');
                 }
