@@ -70,9 +70,9 @@
                                 <div class="form-group col-md-12" style="text-align: center;">
                                     <input type="text" class="form-control" name="chaptercount" placeholder="С какой главы платная? 0 - бесплатная" value="{{$book->chapter_count}}"required>
                                 </div>
-                                <div class="form-group col-md-12" style="text-align: center;">
+                                {{--<div class="form-group col-md-12" style="text-align: center;">
                                     <input type="text" class="form-control" name="price" placeholder="Цена" value="{{$book->price}}">
-                                </div>
+                                </div>--}}
                                 <div class="form-group col-md-12" style="text-align: center;">
                                     <input class="form-check-input" name="translated" type="checkbox" value="1" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1" >
@@ -80,14 +80,14 @@
                                     </label>
                                 </div>
                                 <div class="form-group col-md-12" style="text-align: center;">
-                                    <input class="form-check-input" name="public" type="checkbox" value="1" id="defaultCheck2">
+                                    <input class="form-check-input" name="public" type="checkbox" checked value="1" id="defaultCheck2">
                                     <label class="form-check-label" for="defaultCheck2">
                                         Разрешить показ
                                     </label>
                                 </div>
 
                                 <div class="form-group col-md-12" style="text-align: center;">
-                                    <input class="form-check-input" type="checkbox" value="1" id="defaultCheck3" required>
+                                    <input class="form-check-input" type="checkbox" checked value="1" id="defaultCheck3" required>
                                     <label class="form-check-label" for="defaultCheck3" >
                                         Вы согласны с правилами пользования сервисом?
                                     </label>

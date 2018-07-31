@@ -41,9 +41,11 @@
                                 </div>
                             </div>
                             <div class="row catalog-item-col">
-                                <div class="col-md-4"><a class="btn btn-primary" href="/chapter/edit/{{$book->id}}">Добавить главу</a></div>
-                                <div class="col-md-4"><a class="btn btn-warning" href="/book/edit/{{$book->id}}">Редактировать</a></div>
-                                <div class="col-md-4"><a class="btn btn-danger" href="/book/delete/{{$book->id}}">Удалить</a></div>
+                                <div class="col-md-12">
+                                    <a class="btn btn-primary" href="/chapter/edit/{{$book->id}}">Главы</a>
+                                    <a class="btn btn-warning" href="/book/edit/{{$book->id}}">Редактировать</a>
+                                    <a class="btn btn-danger" href="/book/delete/{{$book->id}}">Удалить</a>
+                                </div>
                             </div>
                         </div>
                         <ul class="pagination justify-content-end  wow fadeInUp ">

@@ -12,6 +12,7 @@ use App\NotificationChapter;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Image;
 
 class BooksController extends Controller
@@ -162,6 +163,44 @@ class BooksController extends Controller
        }
    }
 
+   public function editChapter(Request $request, $id){
+       $chapter = Chapter::find($id);
+       $user = Auth::user();
+       $text = str_replace(['<br />'], "</p><p>", $request->text);
+       foreach ($user->roles as $role){
+           if($role->name == 'author' || $role->name == 'admin'){
+               $chapter->name = $request->name;
+               $chapter->text = strip_tags($text, '<p><a>');
+               $chapter->number = $request->number;
+               $chapter->author_id = $user->id;
+               $chapter->book_id = $request->bookid;
+               $chapter->save();
+               return redirect()->back();
+           }else{
+               return abort(403,'Access Denied');
+           }
+       }
+   }
+
+    public function deleteChapter($id)
+    {
+        Log::info('DATA deleteChapter TEST!!!');
+        if(isset($id) && !empty($id))
+        {
+            if(Auth::check()){
+                $chapter  = Chapter::find($id);
+                if(isset($chapter) && !empty($chapter) && $chapter->author_id == Auth::user()->id){
+                    Log::info('DATA deleteChapter: '. $chapter);
+
+                    $chapter->delete();
+                    return redirect('mybooks');
+                }
+            }else{
+                abort(403 , 'Access denied');
+            }
+        }
+    }
+
    public function myBooks()
    {
        $user = Auth::user();
@@ -191,8 +230,8 @@ class BooksController extends Controller
        {
             $chapter = new Chapter();
             $user = Auth::user();
+            $text = str_replace(['<br />'], "</p><p>", $request->textchapter);
             foreach ($user->roles as $role){
-                $text = str_replace(['<br />'], "</p><p>", $request->textchapter);
                 if($role->name == 'author' || $role->name == 'admin'){
                     $chapter->name = $request->namechapter;
                     $chapter->text = strip_tags($text, '<p><a>');

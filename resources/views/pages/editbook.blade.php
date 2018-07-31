@@ -23,11 +23,24 @@
                                         </div>
 
                                         <div id="collapse{{$key}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <input type="number" class="form-control"  placeholder="Номер главы" value="{{$c->number}}" required><br>
-                                                <input type="text" class="form-control"  placeholder="Название главы" value="{{$c->name}}" required><br>
-                                                <textarea class="form-control editorchapter" rows="20"  placeholder="Текст книги" required>{{$c->text}}</textarea>
-                                            </div>
+                                            <form class="wow fadeInUp" method="POST" action="{{route('editChapter', ['id'=>$c->id])}}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="bookid" value="{{$book->id}}">
+                                                <div class="card-body">
+                                                    <input type="number" name="number" class="form-control"  placeholder="Номер главы" value="{{$c->number}}" required><br>
+                                                    <input type="text" name="name" class="form-control"  placeholder="Название главы" value="{{$c->name}}" required><br>
+                                                    <textarea name="text" class="form-control editorchapter" rows="20"  placeholder="Текст книги" required>{{$c->text}}</textarea>
+                                                </div>
+                                                <div class="form-group col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-primary">Изменить главу</button>
+                                                </div>
+                                            </form>
+                                            <form class="wow fadeInUp" method="POST" action="{{route('deleteChapter', ['id'=>$c->id])}}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group col-md-12" style="text-align: center;">
+                                                    <button type="submit" class="btn btn-danger">Удалить главу</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

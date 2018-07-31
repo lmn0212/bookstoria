@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
     //chapter
     Route::post('/chapter/add', 'BooksController@addChapter')->name('addchapter');
     Route::get('/chapter/edit/{id}', 'BooksController@editBook')->name('editbook');
+    Route::post('/chapter/edit_chapter/{id}', 'BooksController@editChapter')->name('editChapter');
+    Route::post('/chapter/delete/{id}', 'BooksController@deleteChapter')->name('deleteChapter');
     //library
     Route::get('/library/add/{id}', 'LibraryController@add')->name('libadd');
     Route::get('/mylibrary', 'LibraryController@libraryGet')->name('lib');
