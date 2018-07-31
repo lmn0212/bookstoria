@@ -86,7 +86,7 @@ class BooksController extends Controller
                     if(isset($request->id) && !empty($request->id))
                     {
                         $book = Book::find($request->id);
-                        if(isset($book) && !empty($book) && $book->author->id == Auth::user()->id)
+                        if(isset($book) && !empty($book) && $book->author_id == Auth::user()->id)
                         {
                             $book->name = $request->name;
                             $book->author_name = $request->author;
