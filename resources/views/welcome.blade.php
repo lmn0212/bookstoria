@@ -3,7 +3,6 @@
 @section('content')
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-
         @if(count($banners) > 0)
             @foreach($banners as $banner)
                 @if($banner->public == '1')
@@ -26,7 +25,6 @@
     </div>
     <i class="fas fa-angle-down slider-arrow"></i>
 </div>
-
 <div class="container main">
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3 left-sidebar wow fadeInLeft">
@@ -66,6 +64,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -85,6 +90,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -104,6 +116,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -123,6 +142,13 @@
                                 <img src="{{$book->cover}}" width="100%" height="auto">
                                 <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                             </a>
+                            @if($book->author_id)
+                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                </a>
+                            @else
+                                <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -142,6 +168,13 @@
                                     <img src="{{$book->cover}}" width="100%" height="auto">
                                     <p class="catalog-item-title">{{$book->name}} | {{$book->author_name}}</p>
                                 </a>
+                                @if($book->author_id)
+                                    <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                        <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                    </a>
+                                @else
+                                    <h6 class="book-title" style="text-align: center;">{{$book->author_name}}</h6>
+                                @endif
                             </div>
                         </div>
                     @endforeach

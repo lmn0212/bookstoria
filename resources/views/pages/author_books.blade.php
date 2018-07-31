@@ -29,7 +29,13 @@
                                         {{$book->name}}
                                     </h4>
                                 </a>
-                                <h6 class="book-title">{{$book->author_name}}</h6>
+                                @if($book->author_id)
+                                    <a href="{{route('author_books', ['id'=>$book->author_id])}}">
+                                        <h6 class="book-title">{{$book->author_name}}</h6>
+                                    </a>
+                                @else
+                                    <h6 class="book-title">{{$book->author_name}}</h6>
+                                @endif
                                 <p>{!! str_limit($book->annotation,300) !!} <a href="/book/{{$book->id}}" class="read-more">Подробнее</a>
                                 </p>
                                 <p class="book-tags"><strong>Жанры:</strong>

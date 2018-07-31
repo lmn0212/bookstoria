@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Banner;
 use App\Book;
 use App\Category;
@@ -101,7 +102,8 @@ class PagesController extends Controller
         if(Auth::user())
         {
             $user = Auth::user();
-            $book = Book::where('author_id',$user->id)->get();
+            $author = Author::where('user_id', $user->id)->first();
+            $book = Book::where('author_id',$author->id)->get();
             $day = Carbon::today();
             $week = $day->subWeek();
             $month = $day->subMonth();
