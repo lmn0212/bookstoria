@@ -33,7 +33,7 @@ AdminSection::registerModel(\App\Book::class, function (ModelConfiguration $mode
         return AdminForm::panel()->addBody([
             AdminFormElement::text('name', 'Название книги')->required(),
             AdminFormElement::image('cover', 'Обложка книги')->required(),
-            AdminFormElement::selectajax('author_id', 'Владелец')->setModelForOptions(new \App\Author())->setDisplay('name'),
+            AdminFormElement::selectajax('author_id', 'Владелец')->setModelForOptions(new \App\User())->setDisplay('email'),
             AdminFormElement::text('author_name', 'Автор')->required(),
             AdminFormElement::wysiwyg('annotation', 'Аннотация')->required(),
             AdminFormElement::multiselect('categories', 'Жанры')->setModelForOptions(new Category())->setDisplay('name'),
