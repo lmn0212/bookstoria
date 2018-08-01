@@ -29,6 +29,18 @@ class BooksController extends Controller
                    $book = new Book();
                    $book->name = $request->name;
                    $book->author_name = $request->author;
+                   $authors = explode(", ", $request->author);
+                   if(count($authors)){
+                       foreach ($authors as $author){
+                           $author_t = Author::where('name', $author)->first();
+                           if (!$author_t){
+                                $new_author = new Author();
+                                $new_author->name = $author;
+                                $new_author->user_id = $user->id;
+                                $new_author->save();
+                           }
+                       }
+                   }
                    if ($request->hasfile('cover')){
                        $image = $request->file('cover');
                        $filename  = time() . rand() . '.' . $image->getClientOriginalExtension();
@@ -42,13 +54,14 @@ class BooksController extends Controller
                        $book->booktailer = $request->booktailer;
                    }
                    $book->chapter_count = $request->chaptercount;
-                   $book->price = $request->price;
+                   if ($request->price) $book->price = $request->price;
                    $book->public = $request->public;
 
-                   $author = Author::where('user_id', $user->id)->first();
-                   if ($author){
-                       $book->author_id = $author->id;
-                   }
+//                   $author = Author::where('user_id', $user->id)->first();
+//                   if ($author){
+//                       $book->author_id = $author->id;
+//                   }
+                   $book->author_id = $user->id;
 
                    $book->save();
                    //$b = Book::find($book->id);
@@ -90,6 +103,18 @@ class BooksController extends Controller
                         {
                             $book->name = $request->name;
                             $book->author_name = $request->author;
+                            $authors = explode(", ", $request->author);
+                            if(count($authors)){
+                                foreach ($authors as $author){
+                                    $author_t = Author::where('name', $author)->first();
+                                    if (!$author_t){
+                                        $new_author = new Author();
+                                        $new_author->name = $author;
+                                        $new_author->user_id = $user->id;
+                                        $new_author->save();
+                                    }
+                                }
+                            }
                             if ($request->hasfile('cover')){
                                 $image = $request->file('cover');
                                 $filename  = time() . rand() . '.' . $image->getClientOriginalExtension();
@@ -119,10 +144,13 @@ class BooksController extends Controller
                             {
                                 $book->categories()->attach($cat);
                             }
-                            foreach ($request->collections as $cat)
-                            {
-                                $book->collections()->attach($cat);
+                            if ($request->collections){
+                                foreach ($request->collections as $cat)
+                                {
+                                    $book->collections()->attach($cat);
+                                }
                             }
+
                             return redirect()->route('edittbook', $book->id);
                         }
                     }

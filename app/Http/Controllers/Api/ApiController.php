@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Author;
 use App\Book;
 use App\Chapter;
 use Illuminate\Http\Request;
@@ -83,5 +84,14 @@ class ApiController extends Controller
         }
 
         return $pages;
+    }
+
+    public function getAuthors(){
+        $authors = Author::all()->pluck('name');
+
+        return response()->json([
+            'success' => true,
+            'data' => $authors
+        ], 200)->header('Access-Control-Allow-Origin', '*');
     }
 }

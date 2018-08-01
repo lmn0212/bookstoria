@@ -97,6 +97,7 @@ Route::post('/order/accept/platon','OrderController@acceptOrder');
 Route::prefix('api')->group(function () {
     Route::get('/getChapters/{id}', 'Api\ApiController@getChapters');
     Route::get('/getChapter/{id}', 'Api\ApiController@getChapter');
+    Route::get('/getAuthors', 'Api\ApiController@getAuthors');
 });
 
 

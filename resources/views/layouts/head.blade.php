@@ -41,6 +41,11 @@
         <script src="{{asset('packages/sleepingowl/ckeditor/ckeditor.js')}}" type="text/javascript" charset="utf-8"></script>
     @endif
 
+    @if(Route::currentRouteName() == 'home' || Route::currentRouteName() == 'edittbook')
+        <link rel="stylesheet" type="text/css" href="{{asset('js/jquery-ui/jquery-ui.min.css')}}">
+        <script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}" type="text/javascript" charset="utf-8"></script>
+    @endif
+
     <style type="text/css">
         html, body {
             margin: 0;

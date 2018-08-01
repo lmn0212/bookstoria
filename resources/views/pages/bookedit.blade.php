@@ -19,20 +19,26 @@
                             <input type="hidden" value="{{$book->id}}" name="id">
                             <div class="form-row justify-content-center">
                                 <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" name="name" placeholder="Название книги" value="{{$book->name}}" required>
+                                    <label for="name">Название книги:</label>
+                                    <input type="text" id="name" class="form-control" name="name" placeholder="Название книги" value="{{$book->name}}" required>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" name="author" placeholder="Имя автора" value="{{$book->author_name}}" required>
+                                    {{--<input type="text" class="form-control" name="author" placeholder="Имя автора" value="{{$book->author_name}}" required>--}}
+                                    <div class="ui-widget">
+                                        <label for="tags">Имя автора:</label>
+                                        <input id="tags" class="form-control" name="author" size="50" value="{{$book->author_name}}" required>
+                                    </div>
                                 </div>
                                 <div class="form-group custom-file-block col-md-12" style="margin-top: 35px; margin-left: 5px;">
                                     <input type="file" class="custom-file-input" id="customFile" name="cover" lang="es">
                                     @if(isset($book->cover))
-                                        <label class="custom-file-label" for="customFile" style="background-image: url('/{{$book->cover}}');"></label>
+                                        <label class="custom-file-label" id="label_file" for="customFile" style="background-image: url('/{{$book->cover}}');"></label>
                                     @else
-                                        <label class="custom-file-label" for="customFile"></label>
+                                        <label class="custom-file-label" id="label_file" for="customFile"></label>
                                     @endif
                                 </div>
                                 <div class="form-group col-md-12">
+                                    <label for="annotacia">Аннотация:</label>
                                     <textarea class="form-control" id="annotacia" rows="8" name="annotation" placeholder="Аннотации"  required>{{$book->annotation}}</textarea>
                                 </div>
 
@@ -51,7 +57,7 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="FormControlSelect2">Темматические подборки</label>
-                                    <select class="form-control js-example-basic-multiple" multiple name="collections[]" id="collections" required>
+                                    <select class="form-control js-example-basic-multiple" multiple name="collections[]" id="collections">
                                         @foreach($cols as $col)
                                             <option value="{{$col->id}}"
                                                @if(in_array($col->id,$selpod))
@@ -113,11 +119,69 @@
                 var fr = new FileReader();
 
                 fr.addEventListener("load", function () {
-                    document.querySelector("label").style.backgroundImage = "url(" + fr.result + ")";
+                    document.querySelector("#label_file").style.backgroundImage = "url(" + fr.result + ")";
                 }, false);
 
                 fr.readAsDataURL(this.files[0]);
             }
         });
+    </script>
+
+    {{--Автокомплит, мультиселект АВТОР--}}
+    <script>
+        $( function() {
+            let availableTags = [];
+            function split( val ) {
+                return val.split( /,\s*/ );
+            }
+            function extractLast( term ) {
+                return split( term ).pop();
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/api/getAuthors',
+                data: '',
+                processData: true,
+                contentType: false,
+                success: function(data) {
+                    console.log(data.data);
+                    if(data.success){
+                        availableTags = data.data;
+                    }
+                }
+            });
+
+            $( "#tags" )
+            // don't navigate away from the field on tab when selecting an item
+                .on( "keydown", function( event ) {
+                    if ( event.keyCode === $.ui.keyCode.TAB &&
+                        $( this ).autocomplete( "instance" ).menu.active ) {
+                        event.preventDefault();
+                    }
+                })
+                .autocomplete({
+                    minLength: 0,
+                    source: function( request, response ) {
+                        // delegate back to autocomplete, but extract the last term
+                        response( $.ui.autocomplete.filter(
+                            availableTags, extractLast( request.term ) ) );
+                    },
+                    focus: function() {
+                        // prevent value inserted on focus
+                        return false;
+                    },
+                    select: function( event, ui ) {
+                        let terms = split( this.value );
+                        // remove the current input
+                        terms.pop();
+                        // add the selected item
+                        terms.push( ui.item.value );
+                        // add placeholder to get the comma-and-space at the end
+                        terms.push( "" );
+                        this.value = terms.join( ", " );
+                        return false;
+                    }
+                });
+        } );
     </script>
 @endsection
