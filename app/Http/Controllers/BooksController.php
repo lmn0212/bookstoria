@@ -361,22 +361,32 @@ class BooksController extends Controller
        return abort(404);
    }
 
-    public function getAuthorBooks($id){
-        if(isset($id) && !empty($id))
+    public function getAuthorBooks($author_name){
+        if(isset($author_name) && !empty($author_name))
         {
-            $user = Author::find($id);
+            $user = Author::where('name', 'like', '%'.$author_name.'%')->first();
             $cats = Category::all();
-            $books = Book::where('author_id', $id)->paginate(20);
             $cols = Collection::all();
             $foot = FooterMenu::all();
+//            $books = Book::where('author_name', $author_name)->paginate(20);
+
+            $query = Book::select('*');
+            $query->where(function($query) use ($author_name) {
+                $query->where('author_name', 'like', '%' . $author_name . '%')
+                    ->orWhere('author_name', 'like', '%' . $this->getStringLat($author_name) . '%');
+            });
+            $books = $query->paginate(20);
+
+//            dd($books);
+
             if(isset($books) && !empty($books))
             {
                 return view('pages.author_books',[
                     'cats'=>$cats,
                     'user'=>$user,
-                    'books'=>$books,
                     'cols'=>$cols,
                     'foot'=> $foot,
+                    'books'=>$books,
                 ]);
             }
         }

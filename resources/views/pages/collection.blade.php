@@ -26,13 +26,21 @@
                         <div class="col-12 col-md-9">
                             <a href="/book/{{$book->id}}"><h4 class="book-title">{{$book->name}}</h4></a>
 
-                            @if($book->author_id)
-                                <a href="{{route('author_books', ['id'=>$book->author_id])}}">
-                                    <h6 class="book-title">{{$book->author_name}}</h6>
-                                </a>
+                            @php
+                                $authors = explode(", ", $book->author_name);
+                            @endphp
+                            @if(count($authors))
+                                <h6 class="book-title">
+                                    @foreach($authors as $author)
+                                        <a href="{{route('author_books', ['author_name'=>$author])}}">{{$author}}</a>{{($loop->last)?'':', '}}
+                                    @endforeach
+                                </h6>
                             @else
-                                <h6 class="book-title">{{$book->author_name}}</h6>
+                                <h6 class="book-title">
+                                    <a href="{{route('author_books', ['author_name'=>$book->author_name])}}"></a>
+                                </h6>
                             @endif
+
                             <p>{!! str_limit($book->annotation,300) !!} <a href="/book/{{$book->id}}" class="read-more">Подробнее</a>
                             </p>
                             <p class="book-tags"><strong>Жанры:</strong>

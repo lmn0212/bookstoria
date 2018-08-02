@@ -32,7 +32,18 @@
 
                     <div class="col-12 col-md-9">
 
-                        <h3 class="book-single-titile">{{$book->name}} - {{$book->author_name}}</h3>
+                        <h3 class="book-single-titile">{{$book->name}} -
+                            @php
+                                $authors = explode(", ", $book->author_name);
+                            @endphp
+                            @if(count($authors))
+                                @foreach($authors as $author)
+                                    <a href="{{route('author_books', ['author_name'=>$author])}}">{{$author}}</a>{{($loop->last)?'':', '}}
+                                @endforeach
+                            @else
+                                <a href="{{route('author_books', ['author_name'=>$book->author_name])}}"></a>
+                            @endif
+                        </h3>
 
                         <div class="row">
 
