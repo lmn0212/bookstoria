@@ -94,4 +94,22 @@ class ApiController extends Controller
             'data' => $authors
         ], 200)->header('Access-Control-Allow-Origin', '*');
     }
+
+    public function addAuthors(){
+        $books = Book::all();
+        foreach ($books as $book){
+            $authors = explode(", ", $book->author_name);
+            if(count($authors)){
+                foreach ($authors as $author){
+                    $author_t = Author::where('name', $author)->first();
+                    if (!$author_t){
+                        $new_author = new Author();
+                        $new_author->name = $author;
+                        $new_author->save();
+                    }
+                }
+            }
+        }
+        return response()->json(['success' => true], 200);
+    }
 }
