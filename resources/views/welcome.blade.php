@@ -28,7 +28,8 @@
 <div class="container main">
     <div class="row">
         <div class="col-12 col-md-4 col-lg-3 left-sidebar wow fadeInLeft">
-            <h5>Жанры</h5>
+             <h5 class="desktop-genres">Жанры</h5>
+            <h5 class="mobile-genres">Жанры</h5>
             @include('layouts.sidebar')
         </div>
 
