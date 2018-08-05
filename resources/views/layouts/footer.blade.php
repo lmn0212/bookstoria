@@ -28,7 +28,7 @@
                 <p class="footer-title">Мы в соц.сетях</p>
                 {{--<a target="_blank" href="https://vk.com/bookstoria" class="footer-social-icon"><i class="fab fa-vk"></i></a>--}}
                 <a target="_blank" href="https://www.youtube.com/channel/UCR-ZYQtlunzYMcGh0Jwxo_g" class="footer-social-icon"><i class="fab fa-youtube"></i></a>
-                <a target="_blank" href="https://www.instagram.com/ledi_bookstoria/" class="footer-social-icon"><i class="fab fa-instagram"></i></a>
+                {{--<a target="_blank" href="https://www.instagram.com/ledi_bookstoria/" class="footer-social-icon"><i class="fab fa-instagram"></i></a>--}}
             </div>
         </div>
     </div>
